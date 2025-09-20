@@ -1,5 +1,7 @@
 // Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
 
+const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Question_Circle.svg";
+
 (function(){
 	
 	var Memory = {
@@ -115,12 +117,8 @@
 			var frag = '';
 
 			this.cards.forEach(function(card) {
-				frag += '<div class="card" data-id="'+ card.id +'"><div class="inside">\
-				<div class="front"><img src="'+ card.img +'"\
-				alt="'+ card.name +'" /></div>\
-				<div class="back"><img src="https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Question_Circle.svg"\
-				alt="Codepen" /></div></div>\
-				</div>';
+				frag += 
+				`<div class="card" data-id="${card.id}"><div class="inside"><div class="front"><img src="${card.img}" alt="${card.name}"/></div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
 			});
 			return frag;
 		}
