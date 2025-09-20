@@ -1,7 +1,7 @@
 // Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
 
 const backImage =
-	"https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Question_Circle.svg";
+	"assets/Blue_Question_Circle.svg";
 
 const defaultMD = `
 # Memory
@@ -9,9 +9,9 @@ const defaultMD = `
 Coucou !
 Hi !
 
-![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads)
+![](assets/perso_educajou.svg)
 
-![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Brigit_Komit/1/perso01.svg?ref_type=heads)
+![](assets/brigit_et_komit.png)
 Brigit & Komit
 `;
 
