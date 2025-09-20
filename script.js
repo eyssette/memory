@@ -127,47 +127,38 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 
 	var cards = [
 		{
-			name: "perso1",
 			content: "Coucou",
 			id: 1,
 		},
 		{
-			name: "perso2",
 			content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			id: 2
 		},
 		{
-			name: "perso3",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads)",
 			id: 3
 		},
 		{
-			name: "perso4",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso04.svg?ref_type=heads)",
 			id: 4
 		},
 		{
-			name: "perso5",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso05.svg?ref_type=heads)",
 			id: 5
 		},
 		{
-			name: "perso6",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso06.svg?ref_type=heads)",
 			id: 6
 		},
 		{
-			name: "perso7",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso07.svg?ref_type=heads)",
 			id: 7
 		},
 		{
-			name: "perso8",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso08.svg?ref_type=heads)",
 			id: 8
 		},
 		{
-			name: "perso9",
 			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso09.svg?ref_type=heads)",
 			id: 9
 		},
