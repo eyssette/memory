@@ -2,6 +2,37 @@
 
 const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Question_Circle.svg";
 
+const md = `
+# Memory
+
+Coucou !
+Hi !
+
+
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads)
+Educajou
+`
+
+function parseMarkdown(md) {
+	const content = md.replace(/#.*/g,"").replace(/\n\n+/g,'\n\n').trim()
+	const cardsContent = content.split("\n\n")
+	const cards = [];
+	cardsContent.forEach((card, index) => {
+		if(card.includes('\n')) {
+			const cardSubCards = card.split('\n')
+			cards.push({content:cardSubCards[0],id: index})
+			cards.push({content:cardSubCards[1],id: index})
+		} else {
+			cards.push({content:card,id: index})
+		}
+	});
+	return cards
+}
+
+const cards = parseMarkdown(md)
+
 function duplicateUniqueCards(cards) {
   // Compter les occurrences de chaque id
   const counts = cards.reduce((acc, card) => {
@@ -138,50 +169,6 @@ function duplicateUniqueCards(cards) {
 			return frag;
 		}
 	};
-
-	var cards = [
-		{
-			content: "Coucou !",
-			id: 1,
-		},
-		{
-			content: "Hi !",
-			id: 1,
-		},
-		{
-			content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-			id: 2
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads)",
-			id: 3
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso04.svg?ref_type=heads)",
-			id: 4
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso05.svg?ref_type=heads)",
-			id: 5
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso06.svg?ref_type=heads)",
-			id: 6
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso07.svg?ref_type=heads)",
-			id: 7
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso08.svg?ref_type=heads)",
-			id: 8
-		},
-		{
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso09.svg?ref_type=heads)",
-			id: 9
-		},
-		
-	];
 
 	Memory.init(cards);
 
