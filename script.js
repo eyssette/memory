@@ -117,8 +117,9 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 			var frag = '';
 
 			this.cards.forEach(function(card) {
+				const cardContent = marked.parseInline(card.content)
 				frag += 
-				`<div class="card" data-id="${card.id}"><div class="inside"><div class="front"><img src="${card.img}" alt="${card.name}"/></div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
+				`<div class="card" data-id="${card.id}"><div class="inside"><div class="front">${cardContent}</div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
 			});
 			return frag;
 		}
@@ -127,47 +128,47 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 	var cards = [
 		{
 			name: "perso1",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso01.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso01.svg?ref_type=heads)",
 			id: 1,
 		},
 		{
 			name: "perso2",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso02.png?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso02.png?ref_type=heads)",
 			id: 2
 		},
 		{
 			name: "perso3",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads)",
 			id: 3
 		},
 		{
 			name: "perso4",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso04.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso04.svg?ref_type=heads)",
 			id: 4
 		},
 		{
 			name: "perso5",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso05.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso05.svg?ref_type=heads)",
 			id: 5
 		},
 		{
 			name: "perso6",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso06.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso06.svg?ref_type=heads)",
 			id: 6
 		},
 		{
 			name: "perso7",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso07.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso07.svg?ref_type=heads)",
 			id: 7
 		},
 		{
 			name: "perso8",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso08.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso08.svg?ref_type=heads)",
 			id: 8
 		},
 		{
 			name: "perso9",
-			img: "https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso09.svg?ref_type=heads",
+			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso09.svg?ref_type=heads)",
 			id: 9
 		},
 		
