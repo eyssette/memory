@@ -179,3 +179,12 @@ body {
   color: #56c0eb;
   border-bottom: 1px dotted #56c0eb;
 }
+
+@media print {
+  body{
+    background:white;
+  }
+  .card .back {
+    display:none;
+  }
+}
