@@ -2,7 +2,7 @@
 
 const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Question_Circle.svg";
 
-const md = `
+const defaultMD = `
 # Memory
 
 Coucou !
@@ -13,6 +13,75 @@ Hi !
 ![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Brigit_Komit/1/perso01.svg?ref_type=heads)
 Brigit & Komit
 `
+
+function handleURL(url, options) {
+	const corsProxy = "https://corsproxy.io/?url=";
+	if (url !== "") {
+		let addCorsProxy = options && options.useCorsProxy ? true : false;
+		// Gestion des fichiers hébergés sur la forge et publiés sur une page web
+		if (url.includes(".forge")) {
+			addCorsProxy = false;
+		}
+		// Gestion des fichiers hébergés sur github
+		if (url.startsWith("https://github.com")) {
+			addCorsProxy = false;
+			url = url.replace(
+				"https://github.com",
+				"https://raw.githubusercontent.com",
+			);
+			url = url.replace("/blob/", "/");
+		}
+		// gestion des fichiers hébergés sur codiMD / hedgedoc / digipage
+		if (
+			url.startsWith("https://codimd") ||
+			url.startsWith("https://pad.numerique.gouv.fr/") ||
+			url.includes("hedgedoc") ||
+			url.includes("digipage")
+		) {
+			addCorsProxy = false;
+			url = url
+				.replace("?edit", "")
+				.replace("?both", "")
+				.replace("?view", "")
+				.replace(/#$/, "")
+				.replace(/\/$/, "");
+			url = url.indexOf("download") === -1 ? url + "/download" : url;
+		}
+		// gestion des fichiers hébergés sur framapad ou digidoc
+		if (
+			(url.includes("framapad") || url.includes("digidoc")) &&
+			!url.endsWith("/export/txt")
+		) {
+			addCorsProxy = false;
+			url = url.replace(/\?.*/, "") + "/export/txt";
+		}
+		url = addCorsProxy ? corsProxy + url : url;
+	}
+	return url;
+}
+
+function getMarkdownFromURL(url, options) {
+	url = handleURL(url, options);
+	return fetch(url)
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error("Network response was not ok");
+			}
+			return response.text();
+		})
+		.catch((error) => {
+			console.error(
+				"There has been a problem with your fetch operation:",
+				error,
+			);
+			return defaultMD;
+		});
+}
+
+function getURLfromHash() {
+	const hash = window.location.hash.substring(1);
+	return hash || "";
+}
 
 function parseMarkdown(md) {
 	const content = md.replace(/#.*/g,"").replace(/\n\n+/g,'\n\n').trim()
@@ -30,7 +99,6 @@ function parseMarkdown(md) {
 	return cards
 }
 
-const cards = parseMarkdown(md)
 
 function duplicateUniqueCards(cards) {
   // Compter les occurrences de chaque id
@@ -46,7 +114,7 @@ function duplicateUniqueCards(cards) {
   return cards.concat(uniques);
 }
 
-(function(){
+async function main() {
 	
 	var Memory = {
 		
@@ -169,6 +237,12 @@ function duplicateUniqueCards(cards) {
 		}
 	};
 
+	const md = getURLfromHash() ? await getMarkdownFromURL(getURLfromHash()) : defaultMD
+
+	const cards = parseMarkdown(md)
+
 	Memory.init(cards);
 
-})();
+};
+
+main();
