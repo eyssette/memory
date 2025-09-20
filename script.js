@@ -8,11 +8,10 @@ const md = `
 Coucou !
 Hi !
 
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-
 ![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso03.svg?ref_type=heads)
-Educajou
+
+![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Brigit_Komit/1/perso01.svg?ref_type=heads)
+Brigit & Komit
 `
 
 function parseMarkdown(md) {
