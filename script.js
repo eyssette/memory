@@ -27,6 +27,7 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 			this.paused = false;
 			this.guess = null;
 			this.binding();
+			textFit(document.querySelectorAll('.front'), {multiLine: false});
 		},
 		
 		binding: function(){
@@ -47,7 +48,6 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 			if(insideElement && !this.paused && !insideElement.classList.contains("matched") && !insideElement.classList.contains("picked")){
 				insideElement.classList.add("picked");
 				if(!this.guess){
-					console.log("test1")
 					this.guess = $card.getAttribute("data-id");
 				} else if(this.guess == $card.getAttribute("data-id") && !$card.classList.contains("picked")){
 					document.querySelectorAll(".picked").forEach(function(pickedCard) {
@@ -128,12 +128,12 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 	var cards = [
 		{
 			name: "perso1",
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso01.svg?ref_type=heads)",
+			content: "Coucou",
 			id: 1,
 		},
 		{
 			name: "perso2",
-			content: "![](https://forge.apps.education.fr/educajou/autobd/-/raw/main/contenus/personnages/Jous/1/perso02.png?ref_type=heads)",
+			content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
 			id: 2
 		},
 		{
