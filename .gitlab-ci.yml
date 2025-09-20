@@ -1,0 +1,22 @@
+variables:
+  FILES_TO_COMPRESS: "htm html txt text js css md ico svg pdf"
+
+pages:
+  image: alpine:latest
+  before_script:
+    - apk update && apk add gzip brotli
+  script:
+    - mkdir .public
+    - cp -r * .public
+    - mv .public public
+    -  |
+      for ext in $FILES_TO_COMPRESS; do
+        find public -type f -name "*.$ext" -exec gzip -k -9 {} \;
+        find public -type f -name "*.$ext" -exec brotli -k -q 11 {} \;
+      done
+
+  artifacts:
+    paths:
+      - public
+  rules:
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
