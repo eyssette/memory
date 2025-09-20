@@ -2,6 +2,20 @@
 
 const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Question_Circle.svg";
 
+function duplicateUniqueCards(cards) {
+  // Compter les occurrences de chaque id
+  const counts = cards.reduce((acc, card) => {
+    acc[card.id] = (acc[card.id] || 0) + 1;
+    return acc;
+  }, {});
+
+  // Filtrer les cartes uniques
+  const uniques = cards.filter(card => counts[card.id] === 1);
+
+  // Retourner le tableau original + duplication des uniques
+  return cards.concat(uniques);
+}
+
 (function(){
 	
 	var Memory = {
@@ -11,7 +25,7 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 			this.modal = document.querySelector(".modal");
 			this.overlay = document.querySelector(".modal-overlay");
 			this.restartButton = document.querySelector("button.restart");
-			this.cardsArray = cards.concat(cards);
+			this.cardsArray = duplicateUniqueCards(cards);
 			this.shuffleCards(this.cardsArray);
 			this.setup();
 		},
@@ -127,7 +141,11 @@ const backImage = "https://upload.wikimedia.org/wikipedia/commons/d/d6/Blue_Ques
 
 	var cards = [
 		{
-			content: "Coucou",
+			content: "Coucou !",
+			id: 1,
+		},
+		{
+			content: "Hi !",
 			id: 1,
 		},
 		{
