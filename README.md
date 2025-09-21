@@ -18,9 +18,12 @@ On peut ajouter un titre et/ou une consigne à son jeu de Memory.
 - Pour le titre, on utilise un titre de niveau 1 en Markdown
 - Pour la consigne, on utilise un bloc de citation
 
+Vous pouvez aussi utiliser un fichier audio avec une ligne qui commence par `audio: ` suivie de l'URL de votre fichier.
+
 ## 👀 Exemples
 
-- [Exemple basique](https://memory.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. N'hésitez pas à [récupérer la source en Markdown](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
+- [Exemple basique](https://memory.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. [Voir la source](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
+- [Exemple de Memory avec des sons](http://memory.forge.apps.education.fr/#https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag) et des associations texte / son et image / son. [Voir la source](https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag)
 
 
 ## 👩‍⚖️ Licence
@@ -34,3 +37,4 @@ Il a été réécrit sans jQuery et ajoute les fonctionnalités suivantes :
 - source des cartes en Markdown, grâce à la librairie [marked.js](https://marked.js.org/)
 - lecture d'un fichier externe en Markdown en mettant l'URL dans le hash
 - ajustement automatique de la taille de la police dans chaque carte, avec la librairie [textFit](https://github.com/STRML/textFit/)
+- possibilité d'utiliser du texte, une image ou un son dans une carte, avec toutes les associations possibles : texte / image, texte / son, image / son …
