@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.0 (2025-09-21)
+
+### Feat
+
+- gestion des éléments audio
+
+### Fix
+
+- arrêt du son d'une carte si on clique sur une nouvelle
+
 ## 1.2.1 (2025-09-21)
 
 ### Fix
