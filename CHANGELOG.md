@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.1 (2025-09-21)
+
+### Fix
+
+- CSS pour les liens dans le footer
+
+### Chore
+
+- mise en place du CHANGELOG et du bump automatique avec commitizen
+
 ## 1.1.0 (2025-09-21)
 
 ### Feat
