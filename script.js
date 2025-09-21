@@ -61,8 +61,7 @@ function handleURL(url, options) {
 	return url;
 }
 
-function getMarkdownFromURL(url, options) {
-	url = handleURL(url, options);
+function getMarkdownFromURL(url) {
 	return fetch(url)
 		.then((response) => {
 			if (!response.ok) {
@@ -81,7 +80,7 @@ function getMarkdownFromURL(url, options) {
 
 function getURLfromHash() {
 	const hash = window.location.hash.substring(1);
-	return hash || "";
+	return handleURL(hash) || "";
 }
 
 function parseMarkdown(md) {
@@ -247,9 +246,17 @@ async function main() {
 		},
 	};
 
-	const md = getURLfromHash()
-		? await getMarkdownFromURL(getURLfromHash())
-		: defaultMD;
+	const isDefault = getURLfromHash() === "";
+	let md = ""
+	if(isDefault)	{
+		md = defaultMD
+		const footer = document.createElement("footer");
+		const footerContent = await getMarkdownFromURL('https://memory.forge.apps.education.fr/README.md')
+		footer.innerHTML = marked.parse(footerContent);
+		document.body.appendChild(footer);
+	} else {
+		md = await getMarkdownFromURL(getURLfromHash());
+	}
 
 	const cards = parseMarkdown(md);
 
