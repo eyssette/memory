@@ -381,6 +381,13 @@ async function main() {
 		document.body.classList.add("default");
 		const openEditorButton = document.querySelector("button.openEditor");
 		openEditorButton.addEventListener("click", () => {
+			// On teste si on est sur téléphone ou petit écran
+			if (window.innerWidth < 600 || window.innerHeight < 500) {
+				alert(
+					"L'éditeur Markdown n'est pas disponible sur les petits écrans. Merci d'utiliser un ordinateur ou une tablette en mode paysage."
+				);
+				return;
+			}
 			document.body.classList.toggle("editMode");
 			const editorWrapper = document.querySelector(".editor-wrapper");
 			if (editorWrapper === null) {
