@@ -82,6 +82,17 @@ function getURLfromHash() {
 	return handleURL(hash) || "";
 }
 
+const renderer = {
+	link(href, title, text) {
+		const link = marked.Renderer.prototype.link.call(this, href, title, text);
+		return link.replace("<a", "<a target='_blank' rel='noreferrer' ");
+	},
+};
+
+marked.use({
+	renderer,
+});
+
 function parseMarkdown(md) {
 	const content = md.replace(/#.*/g, "").replace(/\n\n+/g, "\n\n").trim();
 	const cardsContent = content.split("\n\n");
