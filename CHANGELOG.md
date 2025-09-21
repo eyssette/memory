@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.0.0 (2025-09-21)
+
+### Feat
+
+- ajout d'un éditeur en ligne
+- ajout d'un champ de redirection vers un Markdown en ligne
+
+### Chore
+
+- Application renommée MemoryMD
+- précision sur les combinaisons possibles (texte, image, son)
+- explications dans le README pour les fichiers audio
+
 ## 1.3.0 (2025-09-21)
 
 ### Feat
