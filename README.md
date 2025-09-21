@@ -12,8 +12,11 @@ Pour utiliser l'application MemoryMD, vous devez créer un fichier Markdown avec
 - Si vous voulez associer deux éléments, écrivez le premier élément sur une ligne, puis allez à la ligne pour écrire le deuxième élément : utilisez la syntaxe Markdown pour écrire votre texte ou insérer une image.
 - Si une seule ligne est présente, au lieu d'associer deux éléments différents, la carte sera répétée deux fois et il s'agira alors de retrouver la carte identique.
 
-Ensuite, mettez l'URL de votre fichier Markdown dans le hash de l'URL de l'application :
-`https://memorymd.forge.apps.education.fr/#URL_DU_FICHIER_MARKDOWN`
+Vous pouvez tester l'éditeur en ligne afin de comprendre comment cela fonctionne  <!--BUTTON_OPEN_EDITOR-->
+
+Pour pouvoir partager votre Memory, il faut mettre votre contenu en Markdown dans un fichier en ligne (par exemple avec CodiMD).
+
+Votre jeu Memory sera alors disponible à l'adresse suivante : `https://memorymd.forge.apps.education.fr/#URL_DU_FICHIER_MARKDOWN`
 
 <!--INPUT_MARKDOWN-->
 

@@ -197,6 +197,7 @@ body.default .card {
 
 .textFitted {
 	display: flex !important;
+	flex-direction: column;
 	height: 100%;
 	justify-content: center;
 	align-items: center;
@@ -265,4 +266,90 @@ h1 + div > blockquote {
 
 label {
 	margin-left: 2em;
+}
+
+.editor-wrapper {
+	float: left;
+	width: 50%;
+	height: 100%;
+	background: white;
+	color: black;
+	padding: 0.5em;
+	margin-top: 6px;
+	max-width: 600px;
+	position: relative;
+	z-index: 1000;
+}
+
+.editor {
+	padding-top: 40px;
+}
+
+.editMode footer {
+	display: none;
+}
+
+.close-editor-button {
+	position: absolute;
+	top: 10px;
+}
+
+.markdownTitles {
+	font-size: 1.1em;
+}
+
+.markdownTitles.h1 {
+	color: darkred;
+	font-size: 1.2em;
+	font-weight: bold;
+}
+.markdownTitles.h2 {
+	color: darkblue;
+	border-bottom: 1px solid darkblue;
+	font-weight: bold;
+}
+
+.markdownTitles.h3 {
+	font-weight: bold;
+	font-size: 1em;
+}
+
+.markdownTitles.h4 {
+	color: rgb(72, 0, 140);
+	font-size: 0.9em;
+}
+
+.markdownBold {
+	font-weight: bold;
+}
+.markdownItalic {
+	font-style: italic;
+}
+.markdownLists {
+	color: darkblue;
+	font-weight: bold;
+}
+.markdownLinksURL {
+	color: blue;
+}
+
+.markdownHTMLtag {
+	color: #377512 !important;
+}
+.markdownHTMLtag,
+.markdownHTMLtagContent {
+	font-weight: normal;
+}
+
+.markdownHTMLcomment {
+	color: #666;
+}
+
+.markdownSeparator {
+	color: darkred;
+	font-weight: bold;
+}
+.markdownYAML {
+	color: darkgreen;
+	font-weight: bold;
 }

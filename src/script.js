@@ -157,161 +157,203 @@ function redirectToUrl(input, baseURL = window.location.origin) {
 function addRedirectionToOnlineMarkdown(footerContentHTML) {
 	const html = `<label for="redirect">Copiez ici le lien vers votre fichier, puis cliquer sur “OK” pour ouvrir votre Memory :</label>
 <input type="url" id="redirect" class="redirect-input" placeholder="Votre URL"> <button  class="redirect-button" data-input-id="redirect" >OK</button>`;
-	return footerContentHTML.replace("<!--INPUT_MARKDOWN-->", html);
+	return footerContentHTML
+		.replace("<!--INPUT_MARKDOWN-->", html)
+		.replace(
+			"<!--BUTTON_OPEN_EDITOR-->",
+			`<button class="openEditor">Ouvrir l'éditeur en ligne</button>`
+		);
 }
 
 let sound;
 
-async function main() {
-	var Memory = {
-		init: function (cards) {
-			this.game = document.querySelector(".game");
-			this.modal = document.querySelector(".modal");
-			this.overlay = document.querySelector(".modal-overlay");
-			this.restartButton = document.querySelector("button.restart");
-			this.cardsArray = duplicateUniqueCards(cards);
-			this.shuffleCards(this.cardsArray);
-			this.setup();
-		},
-
-		shuffleCards: function (cardsArray) {
-			this.cards = this.shuffle(cardsArray);
-		},
-
-		setup: function () {
-			this.html = this.buildHTML();
-			this.game.innerHTML = this.html;
-			this.memoryCards = document.querySelectorAll(".card");
-			this.paused = false;
-			this.guess = null;
-			this.binding();
-			textFit(document.querySelectorAll(".front"), { multiLine: false });
-		},
-
-		binding: function () {
-			var self = this;
-			this.memoryCards.forEach(function (card) {
-				card.addEventListener("click", function () {
-					self.cardClicked.call(self, card);
-				});
-			});
-			this.restartButton.addEventListener("click", function () {
-				self.reset.call(self);
-			});
-		},
-
-		cardClicked: function (card) {
-			var $card = card;
-			var insideElement = $card.querySelector(".inside");
-			// Gestion des éléments audio
-			const audio = insideElement.querySelector("div[data-audio-src]");
-			if (sound) {
-				sound.pause();
-				sound.currentTime = 0;
+var Memory = {
+	init: function (md) {
+		const memoryInfo = parseMarkdown(md);
+		const cards = memoryInfo.cards;
+		if (memoryInfo.title) {
+			document.title = memoryInfo.title;
+			const h1 = document.querySelector("body > h1")
+				? document.querySelector("body > h1")
+				: document.createElement("h1");
+			h1.textContent = memoryInfo.title;
+			document.body.insertBefore(h1, document.querySelector(".wrap"));
+		} else {
+			const h1 = document.querySelector("body > h1");
+			if (h1) h1.remove();
+		}
+		if (memoryInfo.blockquote) {
+			const div = document.querySelector(".instructions")
+				? document.querySelector(".instructions")
+				: document.createElement("div");
+			div.className = "instructions";
+			div.innerHTML = marked.parse(memoryInfo.blockquote);
+			const h1 = document.querySelector("body > h1");
+			if (h1) {
+				h1.insertAdjacentElement("afterend", div);
+			} else {
+				document.body.insertBefore(div, document.querySelector(".wrap"));
 			}
-			if (audio) {
-				sound = new Audio(audio.getAttribute("data-audio-src"));
-				sound.play();
+		} else {
+			const div = document.querySelector(".instructions");
+			if (div) div.remove();
+		}
+		this.game = document.querySelector(".game");
+		this.modal = document.querySelector(".modal");
+		this.overlay = document.querySelector(".modal-overlay");
+		this.restartButton = document.querySelector("button.restart");
+		this.cardsArray = duplicateUniqueCards(cards);
+		this.shuffleCards(this.cardsArray);
+		this.setup();
+	},
+
+	shuffleCards: function (cardsArray) {
+		if (
+			document.querySelector(".editor-wrapper") &&
+			!document.body.classList.contains("mouseOutEditor")
+		) {
+			// En mode édition, ne pas mélanger les cartes
+			this.cards = cardsArray;
+		} else {
+			this.cards = this.shuffle(cardsArray);
+		}
+	},
+
+	setup: function () {
+		this.html = this.buildHTML();
+		this.game.innerHTML = this.html;
+		this.memoryCards = document.querySelectorAll(".card");
+		this.paused = false;
+		this.guess = null;
+		this.binding();
+		textFit(document.querySelectorAll(".front"), { multiLine: false });
+	},
+
+	binding: function () {
+		var self = this;
+		this.memoryCards.forEach(function (card) {
+			card.addEventListener("click", function () {
+				self.cardClicked.call(self, card);
+			});
+		});
+		this.restartButton.addEventListener("click", function () {
+			self.reset.call(self);
+		});
+	},
+
+	cardClicked: function (card) {
+		var $card = card;
+		var insideElement = $card.querySelector(".inside");
+		// Gestion des éléments audio
+		const audio = insideElement.querySelector("div[data-audio-src]");
+		if (sound) {
+			sound.pause();
+			sound.currentTime = 0;
+		}
+		if (audio) {
+			sound = new Audio(audio.getAttribute("data-audio-src"));
+			sound.play();
+		}
+		if (
+			insideElement &&
+			!this.paused &&
+			!insideElement.classList.contains("matched") &&
+			!insideElement.classList.contains("picked")
+		) {
+			insideElement.classList.add("picked");
+			if (!this.guess) {
+				this.guess = $card.getAttribute("data-id");
+			} else if (
+				this.guess == $card.getAttribute("data-id") &&
+				!$card.classList.contains("picked")
+			) {
+				document.querySelectorAll(".picked").forEach(function (pickedCard) {
+					pickedCard.classList.add("matched");
+				});
+				this.guess = null;
+			} else {
+				this.guess = null;
+				this.paused = true;
+				var self = this;
+				setTimeout(function () {
+					document.querySelectorAll(".picked").forEach(function (pickedCard) {
+						pickedCard.classList.remove("picked");
+					});
+					self.paused = false;
+				}, 600);
 			}
 			if (
-				insideElement &&
-				!this.paused &&
-				!insideElement.classList.contains("matched") &&
-				!insideElement.classList.contains("picked")
+				document.querySelectorAll(".matched").length ==
+				document.querySelectorAll(".card").length
 			) {
-				insideElement.classList.add("picked");
-				if (!this.guess) {
-					this.guess = $card.getAttribute("data-id");
-				} else if (
-					this.guess == $card.getAttribute("data-id") &&
-					!$card.classList.contains("picked")
-				) {
-					document.querySelectorAll(".picked").forEach(function (pickedCard) {
-						pickedCard.classList.add("matched");
-					});
-					this.guess = null;
-				} else {
-					this.guess = null;
-					this.paused = true;
-					var self = this;
-					setTimeout(function () {
-						document.querySelectorAll(".picked").forEach(function (pickedCard) {
-							pickedCard.classList.remove("picked");
-						});
-						self.paused = false;
-					}, 600);
-				}
-				if (
-					document.querySelectorAll(".matched").length ==
-					document.querySelectorAll(".card").length
-				) {
-					this.win();
-				}
+				this.win();
 			}
-		},
+		}
+	},
 
-		win: function () {
-			this.paused = true;
-			var self = this;
-			setTimeout(function () {
-				self.showModal();
-			}, 1000);
-		},
+	win: function () {
+		this.paused = true;
+		var self = this;
+		setTimeout(function () {
+			self.showModal();
+		}, 1000);
+	},
 
-		showModal: function () {
-			this.overlay.style.display = "block";
-			this.modal.style.display = "block";
-		},
+	showModal: function () {
+		this.overlay.style.display = "block";
+		this.modal.style.display = "block";
+	},
 
-		hideModal: function () {
-			this.overlay.style.display = "none";
-			this.modal.style.display = "none";
-		},
+	hideModal: function () {
+		this.overlay.style.display = "none";
+		this.modal.style.display = "none";
+	},
 
-		reset: function () {
-			this.hideModal();
-			this.shuffleCards(this.cardsArray);
-			this.setup();
-			this.game.style.display = "block";
-		},
+	reset: function () {
+		this.hideModal();
+		this.shuffleCards(this.cardsArray);
+		this.setup();
+		this.game.style.display = "block";
+	},
 
-		// Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
-		shuffle: function (array) {
-			var counter = array.length,
-				temp,
-				index;
-			// While there are elements in the array
-			while (counter > 0) {
-				// Pick a random index
-				index = Math.floor(Math.random() * counter);
-				// Decrease counter by 1
-				counter--;
-				// And swap the last element with it
-				temp = array[counter];
-				array[counter] = array[index];
-				array[index] = temp;
+	// Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
+	shuffle: function (array) {
+		var counter = array.length,
+			temp,
+			index;
+		// While there are elements in the array
+		while (counter > 0) {
+			// Pick a random index
+			index = Math.floor(Math.random() * counter);
+			// Decrease counter by 1
+			counter--;
+			// And swap the last element with it
+			temp = array[counter];
+			array[counter] = array[index];
+			array[index] = temp;
+		}
+		return array;
+	},
+
+	buildHTML: function () {
+		var frag = "";
+
+		this.cards.forEach(function (card) {
+			let cardContent = "";
+			// Gestion des éléments audio
+			if (card.content.startsWith("audio:")) {
+				const audioURL = card.content.replace("audio:", "").trim();
+				cardContent = `<div data-audio-src="${audioURL}">🔊</div>`;
+			} else {
+				cardContent = marked.parseInline(card.content);
 			}
-			return array;
-		},
+			frag += `<div class="card" data-id="${card.id}"><div class="inside"><div class="front">${cardContent}</div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
+		});
+		return frag;
+	},
+};
 
-		buildHTML: function () {
-			var frag = "";
-
-			this.cards.forEach(function (card) {
-				let cardContent = "";
-				// Gestion des éléments audio
-				if (card.content.startsWith("audio:")) {
-					const audioURL = card.content.replace("audio:", "").trim();
-					cardContent = `<div data-audio-src="${audioURL}">🔊</div>`;
-				} else {
-					cardContent = marked.parseInline(card.content);
-				}
-				frag += `<div class="card" data-id="${card.id}"><div class="inside"><div class="front">${cardContent}</div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
-			});
-			return frag;
-		},
-	};
-
+async function main() {
 	const isDefault = getURLfromHash() === "";
 	let md = "";
 	if (isDefault) {
@@ -337,31 +379,30 @@ async function main() {
 		observer.observe(document.body, { childList: true, subtree: true });
 		document.body.appendChild(footer);
 		document.body.classList.add("default");
+		const openEditorButton = document.querySelector("button.openEditor");
+		openEditorButton.addEventListener("click", () => {
+			document.body.classList.toggle("editMode");
+			const editorWrapper = document.querySelector(".editor-wrapper");
+			if (editorWrapper === null) {
+				initMarkdownEditor();
+			} else {
+				editorWrapper.style.display = "block";
+				const closeEditorButton = document.querySelector(
+					".close-editor-button"
+				);
+				closeEditorButton.style.display = "block";
+				const footer = document.querySelector("footer");
+				footer.style.display = "none";
+				footer.style.top = "25vh";
+				const mdFromEditor = document.querySelector(".editor").textContent;
+				Memory.init(mdFromEditor);
+			}
+		});
 	} else {
 		md = await getMarkdownFromURL(getURLfromHash());
 	}
 
-	const memoryInfo = parseMarkdown(md);
-	const cards = memoryInfo.cards;
-	if (memoryInfo.title) {
-		document.title = memoryInfo.title;
-		const h1 = document.createElement("h1");
-		h1.textContent = memoryInfo.title;
-		document.body.insertBefore(h1, document.body.firstChild);
-	}
-	if (memoryInfo.blockquote) {
-		const div = document.createElement("div");
-		div.className = "instructions";
-		div.innerHTML = marked.parse(memoryInfo.blockquote);
-		const h1 = document.querySelector("h1");
-		if (h1) {
-			h1.insertAdjacentElement("afterend", div);
-		} else {
-			document.body.insertBefore(div, document.body.firstChild);
-		}
-	}
-
-	Memory.init(cards);
+	Memory.init(md);
 }
 
 main();
