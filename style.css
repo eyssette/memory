@@ -216,3 +216,13 @@ footer {
 	margin: 0;
 	word-wrap: break-word;
 }
+
+footer li {
+	margin-bottom: 0.5em;
+}
+footer a {
+	color: aqua;
+	text-decoration: none;
+	border-bottom: 1px solid aqua;
+	padding-bottom: 0.2em;
+}
