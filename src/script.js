@@ -98,7 +98,6 @@ function parseMarkdown(md) {
 	// Extraire le premier blockquote
 	const blockquoteMatch = md.match(/^>\s*(.*)/gm);
 	const blockquote = blockquoteMatch ? blockquoteMatch.join("\n").trim() : null;
-	console.log(blockquote);
 
 	// Trouver l'index de début du contenu des cartes après le titre H1 et le blockquote
 	const contentStartIndex = Math.max(
