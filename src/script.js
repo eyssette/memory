@@ -141,6 +141,8 @@ function duplicateUniqueCards(cards) {
 	return cards.concat(uniques);
 }
 
+let sound;
+
 async function main() {
 	var Memory = {
 		init: function (cards) {
@@ -184,8 +186,12 @@ async function main() {
 			var insideElement = $card.querySelector(".inside");
 			// Gestion des éléments audio
 			const audio = insideElement.querySelector("div[data-audio-src]");
+			if (sound) {
+				sound.pause();
+				sound.currentTime = 0;
+			}
 			if (audio) {
-				const sound = new Audio(audio.getAttribute("data-audio-src"));
+				sound = new Audio(audio.getAttribute("data-audio-src"));
 				sound.play();
 			}
 			if (
