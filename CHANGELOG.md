@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.0 (2025-09-21)
+
+### Feat
+
+- possibilité d'ajouter un titre (avec un titre de niveau 1) et une consigne (avec un blockquote)
+
+### Fix
+
+- meilleur affichage (sur petit écran, et sur plus grand écran)
+- ouverture des liens dans un autre onglet
+
 ## 1.1.2 (2025-09-21)
 
 ### Fix
