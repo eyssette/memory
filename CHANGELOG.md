@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.1.2 (2025-09-21)
+
+### Fix
+
+- position top du footer exprimée en vh plutôt qu'en px
+- ajout favicon et attributs meta
+
+### Chore
+
+- réorganisation et création dossier "src" pour fichiers JS et CSS
+
 ## 1.1.1 (2025-09-21)
 
 ### Fix
