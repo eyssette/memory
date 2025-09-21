@@ -141,6 +141,25 @@ function duplicateUniqueCards(cards) {
 	return cards.concat(uniques);
 }
 
+function redirectToUrl(input, baseURL = window.location.origin) {
+	const hash = input.value.trim();
+	baseURL = input.getAttribute("data-base-url")
+		? "https://" + input.getAttribute("data-base-url")
+		: baseURL;
+	if (hash) {
+		const fullUrl = baseURL + `#${hash}`;
+		window.open(fullUrl, "_blank");
+	} else {
+		alert("Veuillez entrer une URL valide.");
+	}
+}
+
+function addRedirectionToOnlineMarkdown(footerContentHTML) {
+	const html = `<label for="redirect">Copiez ici le lien vers votre fichier, puis cliquer sur “OK” pour ouvrir votre Memory :</label>
+<input type="url" id="redirect" class="redirect-input" placeholder="Votre URL"> <button  class="redirect-button" data-input-id="redirect" >OK</button>`;
+	return footerContentHTML.replace("<!--INPUT_MARKDOWN-->", html);
+}
+
 let sound;
 
 async function main() {
@@ -298,10 +317,24 @@ async function main() {
 	if (isDefault) {
 		md = defaultMD;
 		const footer = document.createElement("footer");
-		const footerContent = await getMarkdownFromURL(
-			"https://memorymd.forge.apps.education.fr/README.md"
-		);
-		footer.innerHTML = marked.parse(footerContent);
+		const footerContent = await getMarkdownFromURL("README.md");
+		const footerContentHTML = marked.parse(footerContent);
+		// On ajoute le champ de redirection vers un markdown en ligne
+		footer.innerHTML = addRedirectionToOnlineMarkdown(footerContentHTML);
+		const observer = new MutationObserver(() => {
+			const button = document.querySelector("button.redirect-button");
+			const input = document.querySelector("input.redirect-input");
+			if (button && input) {
+				button.addEventListener("click", () => redirectToUrl(input));
+				input.addEventListener("keydown", (event) => {
+					if (event.key === "Enter") {
+						redirectToUrl(input);
+					}
+				});
+				observer.disconnect();
+			}
+		});
+		observer.observe(document.body, { childList: true, subtree: true });
 		document.body.appendChild(footer);
 		document.body.classList.add("default");
 	} else {

@@ -262,3 +262,7 @@ blockquote {
 h1 + div > blockquote {
 	margin-top: -2em;
 }
+
+label {
+	margin-left: 2em;
+}
