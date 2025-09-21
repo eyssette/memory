@@ -27,7 +27,7 @@ tasks:
     generates:
       - src/style.min.css
     cmds:
-      - cssnano src/style.css src/style.min.css
+      - npx cssnano src/style.css src/style.min.css
 
   bump:
     generates:
@@ -38,7 +38,7 @@ tasks:
 
   push:
     vars:
-      GIT_REPO_NAMES: [memory, github]
+      GIT_REPO_NAMES: [memorymd, github]
     preconditions:
       - test ! -f app/DEBUG
     cmds:

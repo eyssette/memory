@@ -1,18 +1,19 @@
-# Memory
+# MemoryMD
 
-**Memory** est une application libre et gratuite qui permet de créer des jeux d'association à partir d'un simple texte en Markdown.
+**MemoryMD** est une application libre et gratuite qui permet de créer des jeux d'association à partir d'un simple texte en Markdown.
 
 Vous pouvez créer des jeux qui associent : du texte, des images ou du son. Toutes les combinaisons sont possibles : texte/texte, texte/image, texte/son, image/son, image/image, son/son.
 
 ## ⚙️ Fonctionnement
-Pour utiliser l'application Memory, vous devez créer un fichier Markdown avec la syntaxe suivante :
+
+Pour utiliser l'application MemoryMD, vous devez créer un fichier Markdown avec la syntaxe suivante :
 
 - On sépare chaque carte avec une ligne vide.
 - Si vous voulez associer deux éléments, écrivez le premier élément sur une ligne, puis allez à la ligne pour écrire le deuxième élément : utilisez la syntaxe Markdown pour écrire votre texte ou insérer une image.
 - Si une seule ligne est présente, au lieu d'associer deux éléments différents, la carte sera répétée deux fois et il s'agira alors de retrouver la carte identique.
 
 Ensuite, mettez l'URL de votre fichier Markdown dans le hash de l'URL de l'application :
-`https://memory.forge.apps.education.fr/#URL_DU_FICHIER_MARKDOWN`
+`https://memorymd.forge.apps.education.fr/#URL_DU_FICHIER_MARKDOWN`
 
 On peut ajouter un titre et/ou une consigne à son jeu de Memory.
 - Pour le titre, on utilise un titre de niveau 1 en Markdown
@@ -22,17 +23,18 @@ Vous pouvez aussi utiliser un fichier audio avec une ligne qui commence par `aud
 
 ## 👀 Exemples
 
-- [Exemple basique](https://memory.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. [Voir la source](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
-- [Exemple de Memory avec des sons](http://memory.forge.apps.education.fr/#https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag) et des associations texte / son et image / son. [Voir la source](https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag)
+- [Exemple basique](https://memorymd.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. [Voir la source](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
+- [Exemple de Memory avec des sons](http://memorymd.forge.apps.education.fr/#https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag) et des associations texte / son et image / son. [Voir la source](https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag)
 
 
 ## 👩‍⚖️ Licence
 
-Memory est distribué sous licence MIT.
+MemoryMD est distribué sous licence MIT.
 
 ## 🙏 Crédits
 
-Memory a été écrit à partir du [Memory Game de Nate Wiley](https://codepen.io/natewiley/pen/BawOqL) sous License MIT.
+MemoryMD a été écrit à partir du [Memory Game de Nate Wiley](https://codepen.io/natewiley/pen/BawOqL) sous License MIT.
+
 Il a été réécrit sans jQuery et ajoute les fonctionnalités suivantes :
 - source des cartes en Markdown, grâce à la librairie [marked.js](https://marked.js.org/)
 - lecture d'un fichier externe en Markdown en mettant l'URL dans le hash

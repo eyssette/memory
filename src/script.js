@@ -299,7 +299,7 @@ async function main() {
 		md = defaultMD;
 		const footer = document.createElement("footer");
 		const footerContent = await getMarkdownFromURL(
-			"https://memory.forge.apps.education.fr/README.md"
+			"https://memorymd.forge.apps.education.fr/README.md"
 		);
 		footer.innerHTML = marked.parse(footerContent);
 		document.body.appendChild(footer);
