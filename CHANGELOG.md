@@ -15,7 +15,7 @@
 ### Feat
 
 - feat: contenu des cartes en Markdown
-- feat: récuparation de la source MD à partir d'une URL dans le hash
+- feat: récupération de la source MD à partir d'une URL dans le hash
 - feat: source des cartes en Markdown
 - feat: intégration du README.md dans la page d'accueil par défaut
 - feat: possibilité d'avoir 2 cartes, que l'on doit associer, avec le même id, mais un contenu différent
@@ -29,10 +29,10 @@
 
 ### Chore, perf, refactor
 
-- chore: formattage JS et CSS
+- chore: formatage JS et CSS
 - chore: description de l'application dans le fichier README.md
 - chore: configuration de Task pour le build
-- chore: formattage automatique JS et CSS
+- chore: formatage automatique JS et CSS
 - perf: contenu par défaut - images en local et optimisées
 - refactor: fragments de cartes HTML réécrits avec des template literals
 - chore: suppression de card.name qui est inutile
