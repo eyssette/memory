@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.1 (2025-09-21)
+
+### Fix
+
+- CSS pour le titre et le blockquote
+
 ## 1.2.0 (2025-09-21)
 
 ### Feat
