@@ -241,3 +241,18 @@ footer a {
 		line-height: 1.5em;
 	}
 }
+
+h1 {
+	text-align: center;
+	font-size: 2em;
+	margin-bottom: 1.75em;
+}
+
+blockquote {
+	text-align: center;
+	margin-bottom: 2.25em;
+}
+
+h1 + div > blockquote {
+	margin-top: -2em;
+}

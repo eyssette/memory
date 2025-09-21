@@ -2,10 +2,7 @@
 
 const backImage = "assets/Blue_Question_Circle.svg";
 
-const defaultMD = `
-# Memory
-
-Coucou !
+const defaultMD = `Coucou !
 Hi !
 
 ![](assets/perso_educajou.svg)
@@ -94,7 +91,29 @@ marked.use({
 });
 
 function parseMarkdown(md) {
-	const content = md.replace(/#.*/g, "").replace(/\n\n+/g, "\n\n").trim();
+	// Extraire le titre H1
+	const titleMatch = md.match(/^# (.*)/);
+	const title = titleMatch ? titleMatch[1].trim() : null;
+
+	// Extraire le premier blockquote
+	const blockquoteMatch = md.match(/^>\s*(.*)/gm);
+	const blockquote = blockquoteMatch ? blockquoteMatch.join("\n").trim() : null;
+	console.log(blockquote);
+
+	// Trouver l'index de début du contenu des cartes après le titre H1 et le blockquote
+	const contentStartIndex = Math.max(
+		titleMatch ? md.indexOf(titleMatch[0]) + titleMatch[0].length : 0,
+		blockquoteMatch ? md.indexOf(blockquote) + blockquote.length : 0
+	);
+
+	// Ignorer les lignes vides après le titre H1 et le blockquote
+	const startIndex = md.slice(contentStartIndex).match(/^\s*\n*/);
+	const startLine = startIndex
+		? contentStartIndex + startIndex[0].length
+		: contentStartIndex;
+
+	// Traiter le contenu après le titre H1 et le blockquote
+	const content = md.slice(startLine).replace(/\n\n+/g, "\n\n").trim();
 	const cardsContent = content.split("\n\n");
 	const cards = [];
 	cardsContent.forEach((card, index) => {
@@ -106,7 +125,7 @@ function parseMarkdown(md) {
 			cards.push({ content: card, id: index });
 		}
 	});
-	return cards;
+	return { cards, title, blockquote };
 }
 
 function duplicateUniqueCards(cards) {
@@ -271,7 +290,25 @@ async function main() {
 		md = await getMarkdownFromURL(getURLfromHash());
 	}
 
-	const cards = parseMarkdown(md);
+	const memoryInfo = parseMarkdown(md);
+	const cards = memoryInfo.cards;
+	if (memoryInfo.title) {
+		document.title = memoryInfo.title;
+		const h1 = document.createElement("h1");
+		h1.textContent = memoryInfo.title;
+		document.body.insertBefore(h1, document.body.firstChild);
+	}
+	if (memoryInfo.blockquote) {
+		const div = document.createElement("div");
+		div.className = "instructions";
+		div.innerHTML = marked.parse(memoryInfo.blockquote);
+		const h1 = document.querySelector("h1");
+		if (h1) {
+			h1.insertAdjacentElement("afterend", div);
+		} else {
+			document.body.insertBefore(div, document.body.firstChild);
+		}
+	}
 
 	Memory.init(cards);
 }

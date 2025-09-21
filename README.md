@@ -14,6 +14,10 @@ Pour utiliser l'application Memory, vous devez créer un fichier Markdown avec l
 Ensuite, mettez l'URL de votre fichier Markdown dans le hash de l'URL de l'application :
 `https://memory.forge.apps.education.fr/#URL_DU_FICHIER_MARKDOWN`
 
+On peut ajouter un titre et/ou une consigne à son jeu de Memory.
+- Pour le titre, on utilise un titre de niveau 1 en Markdown
+- Pour la consigne, on utilise un bloc de citation
+
 ## 👀 Exemples
 
 - [Exemple basique](https://memory.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. N'hésitez pas à [récupérer la source en Markdown](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
