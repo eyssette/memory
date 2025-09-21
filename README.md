@@ -2,7 +2,7 @@
 
 **Memory** est une application libre et gratuite qui permet de créer des jeux d'association à partir d'un simple texte en Markdown.
 
-Vous pouvez créer des jeux de type texte/texte, texte/image, ou image/image.
+Vous pouvez créer des jeux qui associent : du texte, des images ou du son. Toutes les combinaisons sont possibles : texte/texte, texte/image, texte/son, image/son, image/image, son/son.
 
 ## ⚙️ Fonctionnement
 Pour utiliser l'application Memory, vous devez créer un fichier Markdown avec la syntaxe suivante :
