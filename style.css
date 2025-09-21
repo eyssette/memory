@@ -5,8 +5,8 @@
 html,
 body {
 	height: 99%;
-  overflow-x: hidden;
-  background: black;
+	overflow-x: hidden;
+	background: black;
 }
 
 body {
@@ -130,7 +130,7 @@ body {
 	left: 0;
 	width: 99%;
 	height: 99%;
-  z-index: 100;
+	z-index: 100;
 }
 
 .modal {
@@ -208,11 +208,11 @@ body {
 }
 
 footer {
-  color: white;
-  position:absolute;
-  top:230px;
-  width: 100%;
-  padding:0 50px;
-  margin:0;
-  word-wrap: break-word;
+	color: white;
+	position: absolute;
+	top: 230px;
+	width: 100%;
+	padding: 0 50px;
+	margin: 0;
+	word-wrap: break-word;
 }

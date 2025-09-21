@@ -1,7 +1,6 @@
 // Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
 
-const backImage =
-	"assets/Blue_Question_Circle.svg";
+const backImage = "assets/Blue_Question_Circle.svg";
 
 const defaultMD = `
 # Memory
@@ -247,11 +246,13 @@ async function main() {
 	};
 
 	const isDefault = getURLfromHash() === "";
-	let md = ""
-	if(isDefault)	{
-		md = defaultMD
+	let md = "";
+	if (isDefault) {
+		md = defaultMD;
 		const footer = document.createElement("footer");
-		const footerContent = await getMarkdownFromURL('https://memory.forge.apps.education.fr/README.md')
+		const footerContent = await getMarkdownFromURL(
+			"https://memory.forge.apps.education.fr/README.md"
+		);
 		footer.innerHTML = marked.parse(footerContent);
 		document.body.appendChild(footer);
 	} else {
