@@ -29,6 +29,13 @@ tasks:
     cmds:
       - cssnano style.css style.min.css
 
+  bump:
+    generates:
+      - VERSION
+      - CHANGELOG.md
+    cmds:
+      - cz bump
+
   push:
     vars:
       GIT_REPO_NAMES: [memory, github]
