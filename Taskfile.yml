@@ -1,0 +1,39 @@
+# https://taskfile.dev
+
+version: '3'
+
+tasks:
+  build:
+    aliases:
+      - default
+    cmds:
+      - task: minify-js
+      - task: minify-css
+
+  minify-js:
+    sources:
+      - script.js
+      - script.min.js
+    generates:
+      - script.min.js
+    cmds:
+      - npx terser script.js --output script.min.js --compress --mangle
+    description: Minify script.js to script.min.js
+
+  minify-css:
+    sources:
+      - style.css
+      - style.min.css
+    generates:
+      - style.min.css
+    cmds:
+      - cssnano style.css style.min.css
+
+  push:
+    vars:
+      GIT_REPO_NAMES: [memory, github]
+    preconditions:
+      - test ! -f app/DEBUG
+    cmds:
+      - for: { var: GIT_REPO_NAMES }
+        cmd:  git push {{.ITEM}} && git push {{.ITEM}} --tags
