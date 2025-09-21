@@ -266,6 +266,7 @@ async function main() {
 		);
 		footer.innerHTML = marked.parse(footerContent);
 		document.body.appendChild(footer);
+		document.body.classList.add("default");
 	} else {
 		md = await getMarkdownFromURL(getURLfromHash());
 	}

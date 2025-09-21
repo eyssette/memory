@@ -47,8 +47,8 @@ body {
 }
 .card {
 	float: left;
-	width: 16.66666%;
-	height: 25%;
+	width: 25%;
+	height: 30%;
 	padding: 5px;
 	text-align: center;
 	display: block;
@@ -58,10 +58,15 @@ body {
 	z-index: 50;
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+body.default .card {
+	width: 16.66666%;
+	height: 25%;
+}
 @media (max-width: 800px) {
-	.card {
-		width: 25%;
-		height: 16.666%;
+	.card,
+	body.default .card {
+		width: 50%;
+		height: 30%;
 	}
 }
 .card .inside {
@@ -225,4 +230,14 @@ footer a {
 	text-decoration: none;
 	border-bottom: 1px solid aqua;
 	padding-bottom: 0.2em;
+}
+
+@media (max-width: 800px) {
+	footer {
+		top: 88vh;
+		padding: 0 20px;
+	}
+	footer li {
+		line-height: 1.5em;
+	}
 }
