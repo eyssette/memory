@@ -12,22 +12,22 @@ tasks:
 
   minify-js:
     sources:
-      - script.js
-      - script.min.js
+      - src/script.js
+      - src/script.min.js
     generates:
-      - script.min.js
+      - src/script.min.js
     cmds:
-      - npx terser script.js --output script.min.js --compress --mangle
+      - npx terser src/script.js --output src/script.min.js --compress --mangle
     description: Minify script.js to script.min.js
 
   minify-css:
     sources:
-      - style.css
-      - style.min.css
+      - src/style.css
+      - src/style.min.css
     generates:
-      - style.min.css
+      - src/style.min.css
     cmds:
-      - cssnano style.css style.min.css
+      - cssnano src/style.css src/style.min.css
 
   bump:
     generates:
