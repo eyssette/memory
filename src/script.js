@@ -182,6 +182,12 @@ async function main() {
 		cardClicked: function (card) {
 			var $card = card;
 			var insideElement = $card.querySelector(".inside");
+			// Gestion des éléments audio
+			const audio = insideElement.querySelector("div[data-audio-src]");
+			if (audio) {
+				const sound = new Audio(audio.getAttribute("data-audio-src"));
+				sound.play();
+			}
 			if (
 				insideElement &&
 				!this.paused &&
@@ -267,7 +273,14 @@ async function main() {
 			var frag = "";
 
 			this.cards.forEach(function (card) {
-				const cardContent = marked.parseInline(card.content);
+				let cardContent = "";
+				// Gestion des éléments audio
+				if (card.content.startsWith("audio:")) {
+					const audioURL = card.content.replace("audio:", "").trim();
+					cardContent = `<div data-audio-src="${audioURL}">🔊</div>`;
+				} else {
+					cardContent = marked.parseInline(card.content);
+				}
 				frag += `<div class="card" data-id="${card.id}"><div class="inside"><div class="front">${cardContent}</div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
 			});
 			return frag;
