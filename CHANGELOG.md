@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.0.1 (2025-09-22)
+
+### Fix
+
+- ajout de la partie "Contribuer" dans le README"
+
+### Chore
+
+- modularisation de "handleDefaultContent"
+- commentaire pour indiquer la source première du Memory Game
+- rulesReminder dans le fichier const.mjs
+- modularisation plus avancée de "editor.mjs" et résolution du problème de circularité des dépendances
+- modularisation de editor.mjs
+-  organisation du dossier "js"
+- dossiers "css" et "js" dans le dossier "src"
+- déplacement du dossier "lib" dans "src"
+
 ## 3.0.0 (2025-09-22)
 
 ### Fix
