@@ -28,7 +28,7 @@ export function processYAML(md) {
 			if (yaml && yaml.maths) {
 				loadScript(
 					"https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js",
-					"katex",
+					"katexJS",
 				);
 				loadScript(
 					"https://cdn.jsdelivr.net/npm/marked-katex-extension/lib/index.umd.js",
@@ -36,7 +36,7 @@ export function processYAML(md) {
 				);
 				loadCSS(
 					"https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css",
-					"katex",
+					"katexCSS",
 				);
 			}
 		} catch (e) {
