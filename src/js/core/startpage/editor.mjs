@@ -1,6 +1,6 @@
-import { Memory } from "./gameLogic.mjs";
+import { Memory } from "../game/gameLogic.mjs";
 import { defaultMD } from "./defaultContent.mjs";
-import { CodeJar } from "./lib/codejar.js";
+import { CodeJar } from "../../lib/codejar.js";
 
 // Fonction debounce pour gérer l'update des cards avec un délai
 function debounce(func, wait) {

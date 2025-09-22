@@ -11,9 +11,9 @@ tasks:
 
   rollup-build:
     sources:
-      - lib/*.js
-      - src/*.mjs
-      - src/*.css
+      - src/**/*.js
+      - src/**/*.mjs
+      - src/**/*.css
       - rollup.config.mjs
     generates:
       - src/script.min.js

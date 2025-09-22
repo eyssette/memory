@@ -1,8 +1,8 @@
-import { parseMarkdown } from "./parseMarkdown.mjs";
-import { marked } from "./lib/marked.js";
-import { textFit } from "./lib/textFit.js";
-import { backImage } from "./defaultContent.mjs";
-import { duplicateUniqueCards } from "./utils/arrays.mjs";
+import { parseMarkdown } from "../markdown/parseMarkdown.mjs";
+import { marked } from "../../lib/marked.js";
+import { textFit } from "../../lib/textFit.js";
+import { backImage } from "../startpage/defaultContent.mjs";
+import { duplicateUniqueCards } from "../../utils/arrays.mjs";
 
 let sound;
 

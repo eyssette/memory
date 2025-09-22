@@ -1,5 +1,8 @@
-import { defaultMD, handleDefaultContent } from "./defaultContent.mjs";
-import { getMarkdownFromURL, getURLfromHash } from "./utils/url.mjs";
+import {
+	defaultMD,
+	handleDefaultContent,
+} from "../startpage/defaultContent.mjs";
+import { getMarkdownFromURL, getURLfromHash } from "../../utils/url.mjs";
 import { Memory } from "./gameLogic.mjs";
 
 export async function createMemoryFromMarkdown() {

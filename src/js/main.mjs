@@ -1,4 +1,4 @@
 import "../css/style.css";
-import { createMemoryFromMarkdown } from "./createMemoryFromMarkdown.mjs";
+import { createMemoryFromMarkdown } from "./core/game/createMemoryFromMarkdown.mjs";
 
 createMemoryFromMarkdown();

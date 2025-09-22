@@ -1,8 +1,8 @@
-import { getMarkdownFromURL, redirectToUrl } from "./utils/url.mjs";
-import { marked } from "./lib/marked.js";
+import { getMarkdownFromURL, redirectToUrl } from "../../utils/url.mjs";
+import { marked } from "../../lib/marked.js";
 import { initMarkdownEditor } from "./editor.mjs";
 
-import { Memory } from "./gameLogic.mjs";
+import { Memory } from "../game/gameLogic.mjs";
 
 // Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
 
