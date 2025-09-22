@@ -7,27 +7,21 @@ tasks:
     aliases:
       - default
     cmds:
-      - task: minify-js
-      - task: minify-css
+      - task: rollup-build
 
-  minify-js:
+  rollup-build:
     sources:
-      - src/script.js
-      - src/script.min.js
+      - lib/*.js
+      - src/*.mjs
+      - src/*.css
+      - rollup.config.mjs
     generates:
       - src/script.min.js
-    cmds:
-      - npx terser src/script.js --output src/script.min.js --compress --mangle
-    description: Minify script.js to script.min.js
-
-  minify-css:
-    sources:
-      - src/style.css
       - src/style.min.css
-    generates:
-      - src/style.min.css
+      - src/script.mins.js.map
+    method: timestamp
     cmds:
-      - npx cssnano src/style.css src/style.min.css
+      - npx rollup --config
 
   bump:
     generates:

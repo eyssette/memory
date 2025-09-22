@@ -1,3 +1,7 @@
+import { Memory } from "./gameLogic.mjs";
+import { defaultMD } from "./defaultContent.mjs";
+import { CodeJar } from "../lib/codejar.js";
+
 // Fonction debounce pour gérer l'update des cards avec un délai
 function debounce(func, wait) {
 	let timeout;
@@ -12,16 +16,16 @@ function debounce(func, wait) {
 }
 
 // Fonction pour mettre à jour les cartes
-function updateCards(options) {
+function updateCards() {
 	const editorElement = document.querySelector(".editor");
 	const md = editorElement.textContent;
 	Memory.init(md);
 }
 
-function eventKeyUpDebounceUpdateCards(options) {
+function eventKeyUpDebounceUpdateCards() {
 	// Utiliser debounce pour appeler updateCards avec un délai afin d'éviter un lag dans le cas d'un document long
 	const editorElement = document.querySelector(".editor");
-	const debouncedUpdateCards = debounce(() => updateCards(options), 300);
+	const debouncedUpdateCards = debounce(() => updateCards(), 300);
 	editorElement.addEventListener("keyup", () => {
 		debouncedUpdateCards();
 	});
@@ -90,14 +94,14 @@ const highlightCode = (editor) => {
 	editor.innerHTML = code;
 };
 
-const options = {
+const optionsCodeJar = {
 	addClosing: false,
 	spellCheck: true,
 	preserveIdent: false,
 	tab: "\t",
 };
 
-function initMarkdownEditor() {
+export function initMarkdownEditor() {
 	const editorWrapper = document.createElement("div");
 	editorWrapper.className = "editor-wrapper";
 	document.body.insertBefore(editorWrapper, document.body.firstChild);
@@ -152,7 +156,7 @@ Pour insérer un fichier audio, utilisez la syntaxe suivante : \`audio: URL_DU_F
 		editorWrapper.appendChild(closeEditorButton);
 		const footer = document.querySelector("footer");
 		footer.style.top = "50vh";
-		const jar = CodeJar(editor, highlightCode);
+		const jar = CodeJar(editor, highlightCode, optionsCodeJar);
 		const editorElement = document.querySelector(".editor");
 		let md = editorElement.textContent;
 		md = md ? md : defaultMD + rulesReminder;
