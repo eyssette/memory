@@ -1,5 +1,5 @@
 import { getMarkdownFromURL, redirectToUrl } from "./utils/url.mjs";
-import { marked } from "../lib/marked.js";
+import { marked } from "./lib/marked.js";
 import { initMarkdownEditor } from "./editor.mjs";
 
 import { Memory } from "./gameLogic.mjs";

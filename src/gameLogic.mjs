@@ -1,6 +1,6 @@
 import { parseMarkdown } from "./parseMarkdown.mjs";
-import { marked } from "../lib/marked.js";
-import { textFit } from "../lib/textFit.js";
+import { marked } from "./lib/marked.js";
+import { textFit } from "./lib/textFit.js";
 import { backImage } from "./defaultContent.mjs";
 import { duplicateUniqueCards } from "./utils/arrays.mjs";
 

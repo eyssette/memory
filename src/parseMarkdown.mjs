@@ -1,4 +1,4 @@
-import { marked } from "../lib/marked.js";
+import { marked } from "./lib/marked.js";
 
 const renderer = {
 	link(href, title, text) {
