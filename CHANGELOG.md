@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.1.0 (2025-09-22)
+
+### Feat
+
+- gestion de l'en-tête YAML - styles personnalisés CSS et gestion des mathématiques
+
 ## 3.0.1 (2025-09-22)
 
 ### Fix

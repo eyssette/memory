@@ -1,6 +1,6 @@
 {
 	"name": "memorymd",
-	"version": "3.0.1",
+	"version": "3.1.0",
 	"description": "Un outil libre & gratuit pour créer un jeu de Memory à partir d'un simple texte en Markdown.",
 	"devDependencies": {
 		"@eslint/js": "^9.8.0",
