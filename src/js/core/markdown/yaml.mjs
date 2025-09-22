@@ -37,8 +37,10 @@ export function processYAML(md) {
 				);
 			}
 			if (yaml && yaml.wintext) {
-				const winner = document.querySelector(".winner");
-				winner.textContent = yaml.wintext;
+				loadScript("src/js/lib/htmlSanitizer.js", "htmlSanitizer").then(() => {
+					const winner = document.querySelector(".winner");
+					winner.innerHTML = window.HtmlSanitizer.SanitizeHtml(yaml.wintext);
+				});
 			}
 		} catch (e) {
 			resetCustomStyles(customCSSelement);
