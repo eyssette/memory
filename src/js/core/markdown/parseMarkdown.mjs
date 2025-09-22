@@ -11,7 +11,12 @@ marked.use({
 	renderer,
 });
 
+function stripYAML(md) {
+	return md.replace(/^---[\s\S]*?---\s*/, "");
+}
+
 export function parseMarkdown(md) {
+	md = stripYAML(md);
 	// Extraire le titre H1
 	const titleMatch = md.match(/^# (.*)/);
 	const title = titleMatch ? titleMatch[1].trim() : null;

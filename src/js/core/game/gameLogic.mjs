@@ -2,14 +2,23 @@ import { parseMarkdown } from "../markdown/parseMarkdown.mjs";
 import { marked } from "../../lib/marked.js";
 import { textFit } from "../../lib/textFit.js";
 import { duplicateUniqueCards } from "../../utils/arrays.mjs";
+import { processYAML } from "../markdown/yaml.mjs";
 
 const backImage = "assets/Blue_Question_Circle.svg";
 let sound;
+
+const defaultOptions = marked.getDefaults();
+
+function resetMarked() {
+	marked.setOptions(defaultOptions);
+	marked.use({ extensions: [] });
+}
 
 // Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
 
 export const Memory = {
 	init: function (md) {
+		const yaml = processYAML(md);
 		const memoryInfo = parseMarkdown(md);
 		const cards = memoryInfo.cards;
 		if (memoryInfo.title) {
@@ -45,7 +54,7 @@ export const Memory = {
 		this.restartButton = document.querySelector("button.restart");
 		this.cardsArray = duplicateUniqueCards(cards);
 		this.shuffleCards(this.cardsArray);
-		this.setup();
+		this.setup(yaml);
 	},
 
 	shuffleCards: function (cardsArray) {
@@ -60,9 +69,9 @@ export const Memory = {
 		}
 	},
 
-	setup: function () {
-		this.html = this.buildHTML();
-		this.game.innerHTML = this.html;
+	setup: async function (yaml) {
+		this.html = await this.buildHTML(yaml);
+		this.game.innerHTML = await this.html;
 		this.memoryCards = document.querySelectorAll(".card");
 		this.paused = false;
 		this.guess = null;
@@ -189,11 +198,34 @@ export const Memory = {
 		return array;
 	},
 
-	buildHTML: function () {
+	buildHTML: async function (yaml) {
 		let frag = "";
 
+		// Si on doit gérer les maths
+		const jsMaths = document.querySelector("#script-markedKatex");
+		const useMathsMode = yaml && yaml.maths === true && jsMaths;
+		if (useMathsMode) {
+			// Attente du chargement de markedKatex
+			if (!window.markedKatex) {
+				await new Promise((resolve) => {
+					window.addEventListener("markedKatexLoaded", resolve, { once: true });
+				});
+			}
+
+			// Configuration de marked avec markedKatex
+			marked.use(
+				window.markedKatex({
+					throwOnError: false,
+				}),
+			);
+		} else {
+			resetMarked();
+		}
+
+		// Génération des cartes
 		this.cards.forEach(function (card) {
 			let cardContent = "";
+
 			// Gestion des éléments audio
 			if (card.content.startsWith("audio:")) {
 				const audioURL = card.content.replace("audio:", "").trim();
@@ -201,8 +233,18 @@ export const Memory = {
 			} else {
 				cardContent = marked.parseInline(card.content);
 			}
-			frag += `<div class="card" data-id="${card.id}"><div class="inside"><div class="front">${cardContent}</div><div class="back"><img src="${backImage}" alt="" /></div></div></div>`;
+
+			frag += `
+			<div class="card" data-id="${card.id}">
+				<div class="inside">
+					<div class="front">${cardContent}</div>
+					<div class="back">
+						<img src="${backImage}" alt="" />
+					</div>
+				</div>
+			</div>`;
 		});
+
 		return frag;
 	},
 };

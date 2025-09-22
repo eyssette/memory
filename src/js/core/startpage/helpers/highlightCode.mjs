@@ -58,5 +58,11 @@ export const highlightCode = (editor) => {
 	// Coloration syntaxique pour les séparations
 	code = code.replaceAll("---", '<span class="markdownSeparator">---</span>');
 
+	// Coloration syntaxique pour le yaml
+	code = code.replace(
+		/(style:|maths:)/g,
+		'<span class="markdownYAML">$1</span>',
+	);
+
 	editor.innerHTML = code;
 };
