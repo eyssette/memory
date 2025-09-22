@@ -1,7 +1,5 @@
-import {
-	defaultMD,
-	handleDefaultContent,
-} from "../startpage/defaultContent.mjs";
+import { handleDefaultContent } from "../startpage/defaultContent.mjs";
+import { defaultMD } from "../startpage/const.mjs";
 import { getMarkdownFromURL, getURLfromHash } from "../../utils/url.mjs";
 import { Memory } from "./gameLogic.mjs";
 
