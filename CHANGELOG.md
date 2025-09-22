@@ -1,5 +1,15 @@
 # Changelog
 
+## 3.0.0 (2025-09-22)
+
+### Fix
+
+- pas d'éditeur en ligne pour les petits écrans
+
+### Refactor
+
+- réécriture en modules et compilation avec Rollup
+
 ## 2.0.0 (2025-09-21)
 
 ### Feat
