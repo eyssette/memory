@@ -75,7 +75,7 @@ export const Memory = {
 		this.memoryCards = document.querySelectorAll(".card");
 		this.paused = false;
 		this.guess = null;
-		this.binding();
+		this.binding(yaml);
 		this.resize();
 	},
 
@@ -92,7 +92,7 @@ export const Memory = {
 		});
 	},
 
-	binding: function () {
+	binding: function (yaml) {
 		const self = this;
 		this.memoryCards.forEach(function (card) {
 			card.addEventListener("click", function () {
@@ -100,7 +100,7 @@ export const Memory = {
 			});
 		});
 		this.restartButton.addEventListener("click", function () {
-			self.reset.call(self);
+			self.reset.call(self, yaml);
 		});
 	},
 
@@ -172,10 +172,10 @@ export const Memory = {
 		this.modal.style.display = "none";
 	},
 
-	reset: function () {
+	reset: function (yaml) {
 		this.hideModal();
 		this.shuffleCards(this.cardsArray);
-		this.setup();
+		this.setup(yaml);
 		this.game.style.display = "block";
 	},
 
