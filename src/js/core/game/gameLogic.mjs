@@ -78,13 +78,20 @@ export const Memory = {
 		this.binding(yaml);
 		this.resize();
 		const heightGameElement = this.game.offsetHeight;
-		const heightHeaderElement =
-			document.querySelector("body > h1").offsetHeight +
-			document.querySelector(".instructions").offsetHeight;
-		const newHeightGameElement = heightGameElement - heightHeaderElement - 100;
-		this.game.style.height = newHeightGameElement + "px";
-		document.body.querySelector(".wrap").style.height =
-			newHeightGameElement + "px";
+		const titleHeight = document.querySelector("body > h1")
+			? document.querySelector("body > h1").offsetHeight
+			: 0;
+		const instructionsHeight = document.querySelector(".instructions")
+			? document.querySelector(".instructions").offsetHeight
+			: 0;
+		const heightHeaderElement = titleHeight + instructionsHeight;
+		if (heightHeaderElement > 0) {
+			const newHeightGameElement =
+				heightGameElement - heightHeaderElement - 100;
+			this.game.style.height = newHeightGameElement + "px";
+			document.body.querySelector(".wrap").style.height =
+				newHeightGameElement + "px";
+		}
 	},
 
 	resize: function () {
