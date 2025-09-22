@@ -23,7 +23,7 @@ export function parseMarkdown(md) {
 	// Trouver l'index de début du contenu des cartes après le titre H1 et le blockquote
 	const contentStartIndex = Math.max(
 		titleMatch ? md.indexOf(titleMatch[0]) + titleMatch[0].length : 0,
-		blockquoteMatch ? md.indexOf(blockquote) + blockquote.length : 0
+		blockquoteMatch ? md.indexOf(blockquote) + blockquote.length : 0,
 	);
 
 	// Ignorer les lignes vides après le titre H1 et le blockquote

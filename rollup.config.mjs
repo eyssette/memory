@@ -16,7 +16,7 @@ const onwarn = (warning) => {
 };
 
 export default {
-	input: "src/main.mjs",
+	input: "src/js/main.mjs",
 	onwarn,
 	output: {
 		file: "src/script.min.js",
@@ -30,7 +30,7 @@ export default {
 		}),
 		postcss({
 			extensions: [".css"],
-			include: ["src/style.css"],
+			include: ["src/css/style.css"],
 			extract: "style.min.css",
 			minimize: true,
 			plugins: [

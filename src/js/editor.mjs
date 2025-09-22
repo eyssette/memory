@@ -50,42 +50,42 @@ const highlightCode = (editor) => {
 	// Coloration syntaxique pour le texte en gras
 	code = code.replace(
 		/\*\*(\w.*?)\*\*/g,
-		'<span class="markdownBold">**$1**</span>'
+		'<span class="markdownBold">**$1**</span>',
 	);
 	code = code.replace(
 		/__(\w.*?)__/g,
-		'<span class="markdownBold">__$1__</span>'
+		'<span class="markdownBold">__$1__</span>',
 	);
 	// Coloration syntaxique pour le texte en italique
 	code = code.replace(
 		/(?<!\*)\*(\w.*?)\*(?!\*)/g,
-		'<span class="markdownItalic">*$1*</span>'
+		'<span class="markdownItalic">*$1*</span>',
 	);
 	code = code.replace(
 		/(?<!_)_(\w.*?)_(?!_)/g,
-		'<span class="markdownItalic">_$1_</span>'
+		'<span class="markdownItalic">_$1_</span>',
 	);
 	// Coloration syntaxique pour les listes
 	code = code.replace(
 		/^(\s*)([-*]|\d+\.)(\s)/gm,
-		'<span class="markdownLists">$1$2</span>$3'
+		'<span class="markdownLists">$1$2</span>$3',
 	);
 	// Coloration syntaxique pour les liens
 	code = code.replace(
 		/(\[.*?\])\((.*?)\)/g,
-		'<span class="markdownLinksText">$1</span><span class="markdownLinksURL">($2)</span>'
+		'<span class="markdownLinksText">$1</span><span class="markdownLinksURL">($2)</span>',
 	);
 
 	// Coloration syntaxique pour les tags html
 	code = code.replace(
 		/(&lt;aside&gt;)(.*?)(&lt;\/aside&gt;)/g,
-		'<span class="markdownHTMLtag">$1</span><span class="markdownHTMLtagContent">$2</span><span class="markdownHTMLtag">$3</span>'
+		'<span class="markdownHTMLtag">$1</span><span class="markdownHTMLtagContent">$2</span><span class="markdownHTMLtag">$3</span>',
 	);
 
 	// Coloration syntaxique pour les commentaires html
 	code = code.replace(
 		/(&lt;!--.*?--&gt;)/g,
-		'<span class="markdownHTMLcomment">$1</span>'
+		'<span class="markdownHTMLcomment">$1</span>',
 	);
 
 	// Coloration syntaxique pour les séparations
@@ -109,7 +109,7 @@ export function initMarkdownEditor() {
 	editor.className = "editor";
 	editor.setAttribute(
 		"data-placeholder",
-		"Éditez le Markdown ici pour créer votre propre Memory !"
+		"Éditez le Markdown ici pour créer votre propre Memory !",
 	);
 	setTimeout(() => {
 		const rulesReminder = `
@@ -138,7 +138,7 @@ Pour insérer un fichier audio, utilisez la syntaxe suivante : \`audio: URL_DU_F
 		closeEditorButton.innerHTML = "Fermer l'éditeur";
 		closeEditorButton.addEventListener("click", () => {
 			const closeEditorConfirm = confirm(
-				"Voulez-vous vraiment fermer l'éditeur Markdown ?\n\nVos modifications seront perdues si vous n'avez pas copié le contenu de l'éditeur avant de fermer."
+				"Voulez-vous vraiment fermer l'éditeur Markdown ?\n\nVos modifications seront perdues si vous n'avez pas copié le contenu de l'éditeur avant de fermer.",
 			);
 			if (closeEditorConfirm) {
 				document.body.classList.remove("editMode");
