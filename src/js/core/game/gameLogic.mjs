@@ -77,6 +77,14 @@ export const Memory = {
 		this.guess = null;
 		this.binding(yaml);
 		this.resize();
+		const heightGameElement = this.game.offsetHeight;
+		const heightHeaderElement =
+			document.querySelector("body > h1").offsetHeight +
+			document.querySelector(".instructions").offsetHeight;
+		const newHeightGameElement = heightGameElement - heightHeaderElement - 100;
+		this.game.style.height = newHeightGameElement + "px";
+		document.body.querySelector(".wrap").style.height =
+			newHeightGameElement + "px";
 	},
 
 	resize: function () {
