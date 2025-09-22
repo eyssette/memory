@@ -39,6 +39,10 @@ export function processYAML(md) {
 					"katexCSS",
 				);
 			}
+			if (yaml && yaml.wintext) {
+				const winner = document.querySelector(".winner");
+				winner.textContent = yaml.wintext;
+			}
 		} catch (e) {
 			resetCustomStyles(customCSSelement);
 			console.log("erreur processYAML : " + e);
