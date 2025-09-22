@@ -62,8 +62,11 @@ MemoryMD est distribué sous licence MIT.
 
 MemoryMD a été écrit à partir du [Memory Game de Nate Wiley](https://codepen.io/natewiley/pen/BawOqL) sous License MIT.
 
-Il a été réécrit sans jQuery et ajoute les fonctionnalités suivantes :
+Il a été réécrit sans jQuery et refactorisé pour moderniser le code et l'optimiser.
+
+Cette réécriture ajoute également les fonctionnalités suivantes :
 - source des cartes en Markdown, grâce à la librairie [marked.js](https://marked.js.org/)
 - lecture d'un fichier externe en Markdown en mettant l'URL dans le hash
 - ajustement automatique de la taille de la police dans chaque carte, avec la librairie [textFit](https://github.com/STRML/textFit/)
 - possibilité d'utiliser du texte, une image ou un son dans une carte, avec toutes les associations possibles : texte / image, texte / son, image / son …
+- accès à des fonctionnalités plus avancées (Latex, styles CSS, personnalisation du contenu de l'interface) avec un en-tête YAML dans sa source en Markdown.
