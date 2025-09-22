@@ -70,7 +70,7 @@ export async function handleDefaultContent() {
 		document.body.classList.toggle("editMode");
 		const editorWrapper = document.querySelector(".editor-wrapper");
 		if (editorWrapper === null) {
-			initMarkdownEditor();
+			initMarkdownEditor(Memory);
 		} else {
 			editorWrapper.style.display = "block";
 			const closeEditorButton = document.querySelector(".close-editor-button");
