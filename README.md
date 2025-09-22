@@ -31,6 +31,12 @@ Vous pouvez aussi utiliser un fichier audio avec une ligne qui commence par `aud
 - [Exemple basique](https://memorymd.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. [Voir la source](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
 - [Exemple de Memory avec des sons](http://memorymd.forge.apps.education.fr/#https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag) et des associations texte / son et image / son. [Voir la source](https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag)
 
+## 🙋‍♀️ Contribuer
+
+Merci de votre intérêt pour MemoryMD ! Toute contribution est appréciée !
+
+- N'hésitez pas à faire une suggestion pour ajouter une fonctionnalité, ou à signaler un bug. Pour cela, vous pouvez utiliser les [tickets](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/issues/new) de l'application ou bien envoyer un [mail](forge-apps+guichet+memorymd-memorymd-forge-apps-education-fr-6780-issue-@phm.education.gouv.fr).
+- Si vous souhaitez participer au code de MemoryMD, n'hésitez pas à consulter les tickets et à [contacter le responsable du projet](http://eyssette.forge.apps.education.fr/).
 
 ## 👩‍⚖️ Licence
 
