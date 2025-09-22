@@ -17,7 +17,7 @@ function resetMarked() {
 // Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
 
 export const Memory = {
-	init: function (md) {
+	init: async function (md) {
 		const yaml = processYAML(md);
 		const memoryInfo = parseMarkdown(md);
 		const cards = memoryInfo.cards;
@@ -71,7 +71,7 @@ export const Memory = {
 
 	setup: async function (yaml) {
 		this.html = await this.buildHTML(yaml);
-		this.game.innerHTML = await this.html;
+		this.game.innerHTML = this.html;
 		this.memoryCards = document.querySelectorAll(".card");
 		this.paused = false;
 		this.guess = null;
@@ -228,7 +228,6 @@ export const Memory = {
 		} else {
 			resetMarked();
 		}
-
 		// Génération des cartes
 		this.cards.forEach(function (card) {
 			let cardContent = "";

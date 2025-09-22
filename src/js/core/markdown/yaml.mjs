@@ -30,10 +30,7 @@ export function processYAML(md) {
 					"https://cdn.jsdelivr.net/npm/katex/dist/katex.min.js",
 					"katexJS",
 				);
-				loadScript(
-					"https://cdn.jsdelivr.net/npm/marked-katex-extension/lib/index.umd.js",
-					"markedKatex",
-				);
+				loadScript("src/js/lib/markedKatex.js", "markedKatex");
 				loadCSS(
 					"https://cdn.jsdelivr.net/npm/katex/dist/katex.min.css",
 					"katexCSS",

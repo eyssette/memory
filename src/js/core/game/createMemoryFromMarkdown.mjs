@@ -13,14 +13,15 @@ export async function createMemoryFromMarkdown() {
 	} else {
 		md = (await getMarkdownFromURL(getURLfromHash())) || defaultMD;
 	}
-	Memory.init(md);
 	const yaml = processYAML(md);
 	if (yaml && yaml.maths === true) {
 		const interval = setInterval(() => {
-			if (window.markedKatex) {
+			if (window.markedKatex && window.katex) {
 				clearInterval(interval);
 				Memory.init(md);
 			}
 		}, 500);
+	} else {
+		Memory.init(md);
 	}
 }
