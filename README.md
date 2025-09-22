@@ -31,6 +31,22 @@ Vous pouvez aussi utiliser un fichier audio avec une ligne qui commence par `aud
 - [Exemple basique](https://memorymd.forge.apps.education.fr/#https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour comprendre la structure d'un Memory. [Voir la source](https://codimd.apps.education.fr/5cw7PygxR72Obz8K8mRwew) pour ensuite faire votre propre Memory.
 - [Exemple de Memory avec des sons](http://memorymd.forge.apps.education.fr/#https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag) et des associations texte / son et image / son. [Voir la source](https://codimd.apps.education.fr/fk4QyJ7nSF6dHb1mHOzGag)
 
+## 🚀 Fonctionnalités plus avancées
+
+On peut ajouter des fonctionnalités avec un en-tête YAML.
+
+```yaml
+---
+maths: true
+wintext: Excellent, tu as parfaitement réussi !
+style: body{background:darkgreen}
+---
+```
+
+- `maths: true` permet de mettre des formules mathématiques en Latex
+- `wintext:` permet de personnaliser le message qui s'affiche quand on a terminé le memory
+- `style:` permet d'ajouter des styles CSS personnalisés
+
 ## 🙋‍♀️ Contribuer
 
 Merci de votre intérêt pour MemoryMD ! Toute contribution est appréciée !
