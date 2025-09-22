@@ -202,8 +202,7 @@ export const Memory = {
 		let frag = "";
 
 		// Si on doit gérer les maths
-		const jsMaths = document.querySelector("#script-markedKatex");
-		const useMathsMode = yaml && yaml.maths === true && jsMaths;
+		const useMathsMode = yaml && yaml.maths === true;
 		if (useMathsMode) {
 			// Attente du chargement de markedKatex
 			if (!window.markedKatex) {
