@@ -1,5 +1,21 @@
 # Changelog
 
+## 3.2.0 (2025-09-22)
+
+### Feat
+
+- personnalisation possible du message de réussite
+
+### Fix
+
+- gestion loadScript et loadCSS pour le Latex
+- YAML conservé après un reset pour rejouer
+
+### Chore
+
+- ajout des explications pour les fonctionnalités avancées avec le YAML dans le README
+- suppression d'une condition initiale pour détecter l'utilisation des mathématiques dans les cartes
+
 ## 3.1.0 (2025-09-22)
 
 ### Feat
