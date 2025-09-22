@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.2.1 (2025-09-22)
+
+### Fix
+
+- autorisation du HTML (avec sanitizer) dans le wintext
+- calcul de la taille de h1 et .instructions - fix bug si h1 ou .instructions n'existent pas
+- résolution du bug d'affichage du Latex au départ (chargement librairie markedKatex)
+- ajustement de la taille des éléments .game et .wrap au démarrage s'il y a un titre (h1) et une consigne (.instructions)
+
 ## 3.2.0 (2025-09-22)
 
 ### Feat
