@@ -6,6 +6,8 @@ import { duplicateUniqueCards } from "../../utils/arrays.mjs";
 const backImage = "assets/Blue_Question_Circle.svg";
 let sound;
 
+// Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
+
 export const Memory = {
 	init: function (md) {
 		const memoryInfo = parseMarkdown(md);

@@ -4,8 +4,6 @@ import { initMarkdownEditor } from "./editor.mjs";
 
 import { Memory } from "../game/gameLogic.mjs";
 
-// Adaptation du Memory Game de Nate Wiley (License -- MIT / 2014)
-
 export function addRedirectionToOnlineMarkdown(footerContentHTML) {
 	const htmlRedirection = `<label for="redirect">Copiez ici le lien vers votre fichier, puis cliquer sur “OK” pour ouvrir votre Memory :</label>
 <input type="url" id="redirect" class="redirect-input" placeholder="Votre URL"> <button  class="redirect-button" data-input-id="redirect" >OK</button>`;
