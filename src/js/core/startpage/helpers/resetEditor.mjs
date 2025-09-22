@@ -1,5 +1,4 @@
-import { defaultMD } from "../const.mjs";
-import { rulesReminder } from "./rulesReminder.mjs";
+import { defaultMD, rulesReminder } from "../const.mjs";
 
 export function resetEditor(jar, Memory, editorWrapper, closeEditorButton) {
 	document.body.classList.remove("editMode");

@@ -1,5 +1,4 @@
-import { defaultMD } from "../const.mjs";
-import { rulesReminder } from "../helpers/rulesReminder.mjs";
+import { defaultMD, rulesReminder } from "../const.mjs";
 
 export function initMouseEvents(editorWrapper, editorElement, Memory) {
 	// Quand la souris est sur l'éditeur, on affiche le contenu des cartes
