@@ -4,6 +4,8 @@ import { textFit } from "../../lib/textFit.js";
 import { duplicateUniqueCards } from "../../utils/arrays.mjs";
 import { processYAML } from "../markdown/yaml.mjs";
 import { handleAudio } from "../../utils/audio.mjs";
+import { initializeTitle } from "./helpers/initializeTitle.mjs";
+import { initializeInstructions } from "./helpers/initializeInstructions.mjs";
 
 const backImage = "assets/Blue_Question_Circle.svg";
 
@@ -21,33 +23,8 @@ export const Memory = {
 		const yaml = processYAML(md);
 		const memoryInfo = parseMarkdown(md);
 		const cards = memoryInfo.cards;
-		if (memoryInfo.title) {
-			document.title = memoryInfo.title;
-			const h1 = document.querySelector("body > h1")
-				? document.querySelector("body > h1")
-				: document.createElement("h1");
-			h1.textContent = memoryInfo.title;
-			document.body.insertBefore(h1, document.querySelector(".wrap"));
-		} else {
-			const h1 = document.querySelector("body > h1");
-			if (h1) h1.remove();
-		}
-		if (memoryInfo.blockquote) {
-			const div = document.querySelector(".instructions")
-				? document.querySelector(".instructions")
-				: document.createElement("div");
-			div.className = "instructions";
-			div.innerHTML = marked.parse(memoryInfo.blockquote);
-			const h1 = document.querySelector("body > h1");
-			if (h1) {
-				h1.insertAdjacentElement("afterend", div);
-			} else {
-				document.body.insertBefore(div, document.querySelector(".wrap"));
-			}
-		} else {
-			const div = document.querySelector(".instructions");
-			if (div) div.remove();
-		}
+		initializeTitle(memoryInfo);
+		initializeInstructions(memoryInfo, marked.parse);
 		this.game = document.querySelector(".game");
 		this.modal = document.querySelector(".modal");
 		this.overlay = document.querySelector(".modal-overlay");
@@ -189,16 +166,14 @@ export const Memory = {
 	// Fisher--Yates Algorithm -- https://bost.ocks.org/mike/shuffle/
 	shuffle: function (array) {
 		let counter = array.length;
-		let temp;
-		let index;
 		// While there are elements in the array
 		while (counter > 0) {
 			// Pick a random index
-			index = Math.floor(Math.random() * counter);
+			const index = Math.floor(Math.random() * counter);
 			// Decrease counter by 1
 			counter--;
 			// And swap the last element with it
-			temp = array[counter];
+			const temp = array[counter];
 			array[counter] = array[index];
 			array[index] = temp;
 		}
@@ -206,7 +181,7 @@ export const Memory = {
 	},
 
 	buildHTML: async function (yaml) {
-		let frag = "";
+		let htmlFragment = "";
 
 		// Si on doit gérer les maths
 		const useMathsMode = yaml && yaml.maths === true;
@@ -239,7 +214,7 @@ export const Memory = {
 				cardContent = marked.parseInline(card.content);
 			}
 
-			frag += `
+			htmlFragment += `
 			<div class="card" data-id="${card.id}">
 				<div class="inside">
 					<div class="front">${cardContent}</div>
@@ -250,6 +225,6 @@ export const Memory = {
 			</div>`;
 		});
 
-		return frag;
+		return htmlFragment;
 	},
 };
