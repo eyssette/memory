@@ -211,7 +211,8 @@ export const Memory = {
 				const audioURL = card.content.replace("audio:", "").trim();
 				cardContent = `<div data-audio-src="${audioURL}">🔊</div>`;
 			} else {
-				cardContent = marked.parseInline(card.content);
+				// Convertit le contenu de la carte en HTML et supprime les hashtags au début du contenu pour compatibilité avec FlashMD
+				cardContent = marked.parseInline(card.content.replace(/#+ /, ""));
 			}
 
 			htmlFragment += `
