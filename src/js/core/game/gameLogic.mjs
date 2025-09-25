@@ -3,9 +3,9 @@ import { marked } from "../../lib/marked.js";
 import { textFit } from "../../lib/textFit.js";
 import { duplicateUniqueCards } from "../../utils/arrays.mjs";
 import { processYAML } from "../markdown/yaml.mjs";
+import { handleAudio } from "../../utils/audio.mjs";
 
 const backImage = "assets/Blue_Question_Circle.svg";
-let sound;
 
 const defaultOptions = marked.getDefaults();
 
@@ -123,15 +123,7 @@ export const Memory = {
 		const $card = card;
 		const insideElement = $card.querySelector(".inside");
 		// Gestion des éléments audio
-		const audio = insideElement.querySelector("div[data-audio-src]");
-		if (sound) {
-			sound.pause();
-			sound.currentTime = 0;
-		}
-		if (audio) {
-			sound = new Audio(audio.getAttribute("data-audio-src"));
-			sound.play();
-		}
+		handleAudio(insideElement);
 		if (
 			insideElement &&
 			!this.paused &&
