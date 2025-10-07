@@ -30,7 +30,7 @@ body {
 
 @-webkit-keyframes matchAnim {
 	0% {
-		background: #bcffcc;
+		background: #33ff63;
 	}
 	100% {
 		background: white;
@@ -39,7 +39,7 @@ body {
 
 @keyframes matchAnim {
 	0% {
-		background: #bcffcc;
+		background: #33ff63;
 	}
 	100% {
 		background: white;
@@ -83,8 +83,8 @@ body.default .card {
 	transform: rotateY(180deg);
 }
 .card .inside.matched {
-	-webkit-animation: 1s matchAnim ease-in-out;
-	animation: 1s matchAnim ease-in-out;
+	-webkit-animation: 3s matchAnim ease-in-out;
+	animation: 3s matchAnim ease-in-out;
 	-webkit-animation-delay: 0.4s;
 	animation-delay: 0.4s;
 }

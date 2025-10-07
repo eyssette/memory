@@ -143,7 +143,7 @@ export const Memory = {
 		const self = this;
 		setTimeout(function () {
 			self.showModal();
-		}, 1000);
+		}, 1500);
 	},
 
 	showModal: function () {
