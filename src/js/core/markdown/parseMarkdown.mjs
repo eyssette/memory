@@ -44,7 +44,11 @@ export function parseMarkdown(md) {
 	cardsContent.forEach((card, index) => {
 		if (card.includes("\n")) {
 			const cardSubCards = card.split("\n");
-			cards.push({ content: cardSubCards[0], id: index });
+			cards.push({
+				content: cardSubCards[0],
+				id: index,
+				match: cardSubCards[1],
+			});
 			cards.push({ content: cardSubCards[1], id: index });
 		} else {
 			cards.push({ content: card, id: index });
