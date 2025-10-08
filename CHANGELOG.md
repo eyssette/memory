@@ -1,5 +1,29 @@
 # Changelog
 
+## 3.3.0 (2025-10-08)
+
+### Feat
+
+- calcul automatique de l'affichage optimal en fonction du nombre de cartes
+- calcul du match entre cartes à partir du contenu associé à chaque carte et non de l'id => permet d'avoir des cartes dont le match est le même
+
+### Fix
+
+- correction de l'algorithme (distinction de 3 cas)
+- possibilité d'utiliser le répertoire /jeu sur la forge, sans ajouter .md au nom de fichier dans l'URL
+- affichage amélioré quand on gagne (cartes avec un vert plus visible + fenêtre modale finale qui s'affiche après un délai un peu plus long).
+- supression des hashtags au début du contenu pour compatibilité avec FlashMD
+
+### Chore
+
+- précisions dans le README sur la réécriture du code de base
+
+### Refactor
+
+- simplification de la fonction  isCardMatch qui vérifie si deux cartes sélectionnées forment une paire correcte
+- fonctions initializeTitle et initializeInstructions + cleanup variables
+- modularisation - fonction handleAudio
+
 ## 3.2.1 (2025-09-22)
 
 ### Fix
