@@ -1,5 +1,11 @@
 # Changelog
 
+## 3.3.1 (2025-10-08)
+
+### Fix
+
+- calcul corrigé pour la comparaison de l'ID
+
 ## 3.3.0 (2025-10-08)
 
 ### Feat
