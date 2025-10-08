@@ -63,13 +63,7 @@ body.default .card {
 	width: 16.66666%;
 	height: 25%;
 }
-@media (max-width: 800px) {
-	.card,
-	body.default .card {
-		width: 50%;
-		height: 30%;
-	}
-}
+
 .card .inside {
 	width: 100%;
 	height: 100%;
@@ -345,4 +339,29 @@ label {
 .markdownYAML {
 	color: darkgreen;
 	font-weight: bold;
+}
+
+.verySmallBoard .card,
+.verySmallBoard body.default .card {
+	height: 20%;
+}
+
+@media (max-width: 800px) {
+	.card,
+	body.default .card {
+		width: 50%;
+		height: 130px !important;
+	}
+	.smallBoard .card,
+	.smallBoard body.default .card {
+		height: 100px !important;
+	}
+	.verySmallBoard h1 {
+		font-size: 1.75em;
+	}
+	.verySmallBoard .card,
+	.verySmallBoard body.default .card {
+		width: 33%;
+		max-height: 17%;
+	}
 }

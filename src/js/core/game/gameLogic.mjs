@@ -32,6 +32,10 @@ export const Memory = {
 		this.overlay = document.querySelector(".modal-overlay");
 		this.restartButton = document.querySelector("button.restart");
 		this.cardsArray = duplicateUniqueCards(cards);
+		const numberOfCards = this.cardsArray.length;
+		if ((numberOfCards > 8) & (numberOfCards <= 10))
+			document.body.classList.add("smallBoard");
+		if (numberOfCards > 10) document.body.classList.add("verySmallBoard");
 		this.shuffleCards(this.cardsArray);
 		this.setup(yaml);
 	},
