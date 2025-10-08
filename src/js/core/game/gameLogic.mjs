@@ -6,7 +6,6 @@ import { processYAML } from "../markdown/yaml.mjs";
 import { handleAudio } from "../../utils/audio.mjs";
 import { initializeTitle } from "./helpers/initializeTitle.mjs";
 import { initializeInstructions } from "./helpers/initializeInstructions.mjs";
-import { extractContentFromCardHtmlElement } from "./helpers/extractContentCards.js";
 import { isCardMatch } from "./helpers/isCardMatch.js";
 
 const backImage = "assets/Blue_Question_Circle.svg";
@@ -107,8 +106,6 @@ export const Memory = {
 		const insideElement = $card.querySelector(".inside");
 		// Gestion des éléments audio
 		handleAudio(insideElement);
-		// On récupère le contenu de la carte qu'on a sélectionné
-		let cardPickedContent = extractContentFromCardHtmlElement($card);
 		if (
 			insideElement &&
 			!this.paused &&
@@ -117,7 +114,7 @@ export const Memory = {
 		) {
 			insideElement.classList.add("picked");
 			if (!this.guess) {
-				this.guess = cardPickedContent;
+				this.guess = $card;
 			} else {
 				const firstCardContent = this.guess;
 				const secondCardElement = $card;

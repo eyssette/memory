@@ -4,8 +4,9 @@ import {
 } from "./extractContentCards";
 
 // Fonction qui vérifie si deux cartes sélectionnées forment une paire correcte
-export function isCardMatch(firstCardContent, secondCardElement, cardsData) {
+export function isCardMatch(firstCardElement, secondCardElement, cardsData) {
 	// Extraction du contenu de la deuxième carte
+	const firstCardContent = extractContentFromCardHtmlElement(firstCardElement);
 	const secondCardContent =
 		extractContentFromCardHtmlElement(secondCardElement);
 
@@ -35,8 +36,9 @@ export function isCardMatch(firstCardContent, secondCardElement, cardsData) {
 
 	// si aucun match prédéfini n'existe : vérification du match par l'ID des cartes
 	if (firstCardData) {
+		const firstCardId = firstCardElement.getAttribute("data-id");
 		const secondCardId = secondCardElement.getAttribute("data-id");
-		return firstCardData.id == secondCardId;
+		return firstCardId == secondCardId;
 	}
 
 	return false;
