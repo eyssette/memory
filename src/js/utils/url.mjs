@@ -1,5 +1,11 @@
 export function handleURL(url, options) {
 	const corsProxy = "https://corsproxy.io/?url=";
+	// Permet d'utiliser le répertoire de jeu https://forge.apps.education.fr/memorymd/jeu
+	// avec simplement le nom du fichier de memory dans le hash de l'URL
+	// sans l'extension .md à la fin
+	if (url.startsWith("jeu/") && !url.includes(".md")) {
+		return url + ".md";
+	}
 	if (url !== "") {
 		let addCorsProxy = options && options.useCorsProxy ? true : false;
 		// Gestion des fichiers hébergés sur la forge et publiés sur une page web
