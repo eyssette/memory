@@ -1,8 +1,21 @@
+import { getTextWithLatex } from "./getTextWithLatex";
+
 export function extractContentFromCardHtmlElement(card) {
+	let cardContent;
 	const isAudio = card.innerHTML.includes("data-audio-src");
-	let cardContent = isAudio
-		? card.querySelector(".front div").getAttribute("data-audio-src")
-		: card.textContent.trim() || card.querySelector(".front img").src;
+	if (isAudio) {
+		cardContent = card
+			.querySelector(".front div")
+			.getAttribute("data-audio-src");
+	} else {
+		const isLatex = card.innerHTML.includes("katex");
+		if (isLatex) {
+			cardContent = getTextWithLatex(card);
+		} else {
+			cardContent =
+				card.textContent.trim() || card.querySelector(".front img").src;
+		}
+	}
 	cardContent = cardContent.replace(window.location.origin + "/", "");
 	return cardContent;
 }
