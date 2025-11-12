@@ -21,7 +21,7 @@ export function extractContentFromCardHtmlElement(card) {
 }
 
 export function extractContentFromCardObject(card) {
-	let cardContent = card.content;
+	let cardContent = card.content.trim();
 
 	// Pattern pour "audio: URL"
 	const audioPattern = /^audio:\s*(.+)$/i;
