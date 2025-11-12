@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.3.2 (2025-11-12)
+
+### Fix
+
+- suppression des espaces en début et fin avant calcul du match
+- calcul du match entre 2 cartes - gestion des éléments qui contiennent du Latex
+
 ## 3.3.1 (2025-10-08)
 
 ### Fix
