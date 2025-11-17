@@ -343,7 +343,7 @@ label {
 
 .verySmallBoard .card,
 .verySmallBoard body.default .card {
-	height: 20%;
+	height: 25%;
 }
 
 @media (max-width: 800px) {
