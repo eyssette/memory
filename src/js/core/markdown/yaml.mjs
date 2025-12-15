@@ -1,5 +1,7 @@
 import { load as loadYAML } from "../../lib/js-yaml.js";
 import { loadCSS, loadScript } from "../../utils/url.mjs";
+import { sanitizeHtml } from "../../utils/strings.mjs";
+import { textFit } from "../../lib/textFit.js";
 
 function resetCustomStyles(customCSSelement) {
 	if (customCSSelement) {
@@ -37,10 +39,9 @@ export function processYAML(md) {
 				);
 			}
 			if (yaml && yaml.wintext) {
-				loadScript("src/js/lib/htmlSanitizer.js", "htmlSanitizer").then(() => {
-					const winner = document.querySelector(".winner");
-					winner.innerHTML = window.HtmlSanitizer.SanitizeHtml(yaml.wintext);
-				});
+				const winner = document.querySelector(".winner");
+				winner.innerHTML = sanitizeHtml(yaml.wintext);
+				textFit(document.querySelector(".modal"), { multiLine: true });
 			}
 		} catch (e) {
 			resetCustomStyles(customCSSelement);
