@@ -28,6 +28,8 @@ export const Memory = {
 		initializeInstructions(memoryInfo, marked.parse);
 		this.game = document.querySelector(".game");
 		this.modal = document.querySelector(".modal");
+		const winText = this.modal.querySelector(".winner");
+		winText.innerHTML = marked.parse(winText.textContent);
 		this.overlay = document.querySelector(".modal-overlay");
 		this.restartButton = document.querySelector("button.restart");
 		this.cardsArray = duplicateUniqueCards(cards);
