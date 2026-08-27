@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.3.3 (2026-08-28)
+
+### Fix
+
+- markdown possible dans le wintext défini dans le yaml
+- sanitizeHTML pour le wintext défini dans le yaml
+- **css**: amélioration css verySmallBoard
+
 ## 3.3.2 (2025-11-12)
 
 ### Fix
