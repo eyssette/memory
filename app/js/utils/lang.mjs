@@ -5,12 +5,40 @@ import {
 	overwriteGetLocale,
 } from "../lib/paraglide/runtime.js";
 
-// Définition de la langue du document en fonction de la locale actuelle
+// Stockage de la langue choisie par l'utilisateur
+const STORAGE_KEY = "user-locale-preference";
+
+// Récupération de la langue choisie par l'utilisateur
+export function getUserLocale() {
+	return localStorage.getItem(STORAGE_KEY);
+}
+// Définition de la langue choisie par l'utilisateur
+export function setUserLocale(locale) {
+	localStorage.setItem(STORAGE_KEY, locale);
+}
+
+// Récupération de la langue du navigateur
+function getBrowserLocale() {
+	const browserLocale = navigator.language;
+	const [locale] = browserLocale.split("-");
+	return locale;
+}
+
+// Définition de la langue du document
 export function setLanguage() {
 	overwriteGetLocale(() => {
-		const browserLocale = navigator.language || baseLocale,
-			[locale] = browserLocale.split("-");
-		return locale;
+		// Priorité 1 : Choix explicite de l'utilisateur
+		const userChoice = getUserLocale();
+		if (userChoice) {
+			return userChoice;
+		}
+		const browserLocale = getBrowserLocale();
+		// Priorité 2 : Langue du navigateur
+		if (browserLocale) {
+			return browserLocale;
+		}
+		// Priorité 3 : Langue par défaut
+		return baseLocale;
 	});
 	const currentLocale = getLocale();
 	document.documentElement.lang = currentLocale;
