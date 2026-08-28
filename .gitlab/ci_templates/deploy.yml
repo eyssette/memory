@@ -1,0 +1,5 @@
+# Vous pouvez ici créer un template de déploiement personnalisé pour votre projet, que d'autres personnes pourront inclure dans leur propre pipeline pour déployer votre projet.
+
+# Par défaut, on utilise le même contenu que le pipeline dans le fichier `.gitlab-ci.yml` du projet.
+
+include: ".gitlab-ci.yml"

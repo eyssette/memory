@@ -1,11 +1,131 @@
 {
-	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"[javascript]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true
+	"editor.defaultFormatter": "oxc.oxc-vscode",
+	"editor.formatOnSave": true,
+	"[html]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
 	},
 	"[css]": {
-		"editor.defaultFormatter": "esbenp.prettier-vscode",
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[javascript]": {
+		"editor.defaultFormatter": "oxc.oxc-vscode"
+	},
+	"[markdown]": {
+		"editor.formatOnSave": false
+	},
+	"liveServer.settings.port": 5501,
+	"liveServer.settings.root": "/dist",
+	"editor.semanticTokenColorCustomizations": {
+		"enabled": true,
+		"rules": {
+			"variable": { "underline": true },
+			"variable.local": { "underline": false },
+			"variable.defaultLibrary": { "underline": false },
+			"property.declaration": { "underline": false }
+		}
+	},
+	"[feature]": {
+		"editor.defaultFormatter": "alexkrechik.cucumberautocomplete",
 		"editor.formatOnSave": true
-	}
+	},
+	"cognitiveComplexityShow.enabled": true,
+	"cSpell.enabledFileTypes": {
+		"javascript": false,
+		"markdown": true,
+		"json": true,
+		"csv": true,
+		"tsv": true,
+		"txt": true,
+		"html": true,
+		"yaml": false
+	},
+	"cSpell.language": "en,fr-FR,fr",
+	"cSpell.words": [
+		"cheatsheet",
+		"codecept",
+		"Codecept",
+		"codeceptjs",
+		"commitizen",
+		"commitlintrc",
+		"copycode",
+		"Cormi",
+		"désérialisation",
+		"ecma",
+		"eyssette",
+		"firefox",
+		"firstname",
+		"flexbox",
+		"Flexbox",
+		"focusable",
+		"frontmatter",
+		"github",
+		"gitlab",
+		"Gitlab",
+		"hexa",
+		"htmlvalidate",
+		"inlang",
+		"inplace",
+		"jpegoptim",
+		"lightningcss",
+		"linux",
+		"Markpage",
+		"megalinter",
+		"Modulariser",
+		"oklab",
+		"oklch",
+		"onchange",
+		"onclick",
+		"oxfmt",
+		"oxfmtrc",
+		"oxlint",
+		"paraglide",
+		"pngquant",
+		"PRECACHE",
+		"precommit",
+		"recomputations",
+		"refactorisation",
+		"refactoriser",
+		"rolldown",
+		"RRGGBB",
+		"Sanson",
+		"semgrep",
+		"tabindex",
+		"Taskfile",
+		"trivy",
+		"unitless",
+		"unplugin",
+		"versionnement"
+	],
+	"cSpell.ignorePaths": [
+		"package-lock.json",
+		"node_modules",
+		"vscode-extension",
+		".git/{info,lfs,logs,refs,objects}/**",
+		".git/{index,*refs,*HEAD}",
+		".vscode",
+		".vscode-insiders",
+		".gitignore",
+		"package.json"
+	],
+	"oxc.enable": true,
+	"oxc.enable.oxfmt": true,
+	"oxc.enable.oxlint": true,
+	"oxc.configPath": "oxlint.config.mjs",
+	"oxc.fmt.configPath": ".oxfmtrc.json",
+	"workbench.colorCustomizations": {
+		"editorWarning.foreground": "#00000000" /* Désactive le soulignement des erreurs de type simplement "warning" */
+	},
+	"oxc.disableNestedConfig": true,
+	"html-validate.validate": ["html"],
+	"html-validate.configFile": ".htmlvalidate.json",
+	"json.schemaDownload.trustedDomains": {
+		"https://inlang.com/schema/project-settings": true
+	},
+	"[shellscript]": {
+		"editor.defaultFormatter": "mkhl.shfmt"
+	},
+	"svelte.plugin.svelte.compilerWarnings": {
+		"options_missing_custom_element": "ignore"
+	},
+	"stylelint.configFile": "stylelint.config.mjs"
 }
