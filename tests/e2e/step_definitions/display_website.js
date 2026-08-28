@@ -4,6 +4,6 @@ Given("Je lance la page d'accueil", () => {
 	I.amOnPage("/");
 });
 
-Then("Je vois le texte Hello world", () => {
-	I.see("Hello world");
+Then("Je vois le texte MemoryMD", () => {
+	I.waitForText("MemoryMD", 1);
 });
