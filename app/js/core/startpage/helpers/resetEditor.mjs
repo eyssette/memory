@@ -1,4 +1,4 @@
-import { defaultMD, rulesReminder } from "../const.mjs";
+import { defaultExample, rulesReminder } from "../const.mjs";
 
 // oxlint-disable-next-line max-params
 export function resetEditor(jar, Memory, editorWrapper, closeEditorButton) {
@@ -11,7 +11,7 @@ export function resetEditor(jar, Memory, editorWrapper, closeEditorButton) {
 	footer.style.top = "25vh";
 
 	const style = document.querySelector("style#cardsVisible");
-	jar.updateCode(defaultMD + rulesReminder);
-	Memory.init(defaultMD);
+	jar.updateCode(defaultExample + rulesReminder);
+	Memory.init(defaultExample);
 	if (style) style.remove();
 }

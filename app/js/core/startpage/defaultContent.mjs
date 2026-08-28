@@ -1,5 +1,5 @@
-import { getMarkdownFromURL } from "../../utils/url.mjs";
 import { marked } from "../../lib/marked.js";
+import { m } from "../../lib/paraglide/messages.js";
 import { buildFooter } from "./footer/buildFooter.mjs";
 import {
 	initRedirectionEvents,
@@ -8,7 +8,7 @@ import {
 
 export async function handleDefaultContent() {
 	const footer = document.createElement("footer");
-	const footerContent = await getMarkdownFromURL("README.md");
+	const footerContent = m.readMe();
 	const footerContentHTML = marked.parse(footerContent);
 
 	footer.innerHTML = buildFooter(footerContentHTML);

@@ -1,5 +1,5 @@
 import { handleDefaultContent } from "../startpage/defaultContent.mjs";
-import { defaultMD } from "../startpage/const.mjs";
+import { defaultExample } from "../startpage/const.mjs";
 import { getMarkdownFromURL, getURLfromHash } from "../../utils/url.mjs";
 import { Memory } from "./gameLogic.mjs";
 import { processYAML } from "../markdown/yaml.mjs";
@@ -8,10 +8,10 @@ export async function createMemoryFromMarkdown() {
 	const isDefault = getURLfromHash() === "";
 	let md = "";
 	if (isDefault) {
-		md = defaultMD;
+		md = defaultExample;
 		await handleDefaultContent();
 	} else {
-		md = (await getMarkdownFromURL(getURLfromHash())) || defaultMD;
+		md = (await getMarkdownFromURL(getURLfromHash())) || defaultExample;
 	}
 	const yaml = processYAML(md);
 	if (yaml && yaml.maths === true) {

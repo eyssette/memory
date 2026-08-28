@@ -1,11 +1,11 @@
-import { defaultMD, rulesReminder } from "../const.mjs";
+import { defaultExample, rulesReminder } from "../const.mjs";
 
 export function initMouseEvents(editorWrapper, editorElement, Memory) {
 	// Quand la souris est sur l'éditeur, on affiche le contenu des cartes
 	editorWrapper.addEventListener("mouseover", () => {
 		document.body.classList.remove("mouseOutEditor");
 		if (document.body.classList.contains("editMode")) {
-			let md = editorElement.textContent || defaultMD + rulesReminder;
+			let md = editorElement.textContent || defaultExample + rulesReminder;
 			Memory.init(md);
 		}
 		if (document.querySelector("style#cardsVisible")) return;
@@ -31,7 +31,7 @@ export function initMouseEvents(editorWrapper, editorElement, Memory) {
 	editorWrapper.addEventListener("mouseout", () => {
 		document.body.classList.add("mouseOutEditor");
 		if (document.body.classList.contains("editMode")) {
-			let md = editorElement.textContent || defaultMD + rulesReminder;
+			let md = editorElement.textContent || defaultExample + rulesReminder;
 			Memory.init(md);
 		}
 		const style = document.querySelector("style#cardsVisible");
