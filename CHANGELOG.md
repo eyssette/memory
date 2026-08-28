@@ -1,5 +1,20 @@
 # Changelog
 
+## 4.0.0 (2026-08-28)
+
+### Fix
+
+- **i18n**: gestion de l'internationalisation [(54bd49d)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/54bd49da61cfd3564d9c989ac9740bb9f1189a90)
+
+### Chore
+
+- **i18n**: refactorisation de la définition de la langue au départ, dans une fonction à part [(6776e92)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/6776e92edcf2754898de21ff2543ee80350ec18a)
+- migration de l'environnement de développement vers JS-template [(5d36494)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/5d36494199fbba024cfab06944c139db4092511c)
+
+### Test
+
+- base pour les tests unit et e2e [(44435d8)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/44435d8afdd080ba08785c81ccae7cb225325594)
+
 ## 3.3.3 (2026-08-28)
 
 ### Fix
