@@ -1,16 +1,14 @@
 import { resetEditor } from "../helpers/resetEditor.mjs";
+import { m } from "../../../lib/paraglide/messages.js";
 
 export function createCloseButton(editorWrapper, jar, Memory) {
 	const button = document.createElement("button");
 	button.className = "close-editor-button";
-	button.title = "Fermer l'éditeur Markdown";
-	button.innerHTML = "Fermer l'éditeur";
+	button.title = m.closeEditorButtonTitle();
+	button.innerHTML = m.closeEditorButton();
 
 	button.addEventListener("click", () => {
-		const confirmClose = confirm(
-			"Voulez-vous vraiment fermer l'éditeur Markdown ?\n\n" +
-				"Vos modifications seront perdues si vous n'avez pas copié le contenu.",
-		);
+		const confirmClose = confirm(m.confirmCloseEditor());
 		if (confirmClose) {
 			resetEditor(jar, Memory, editorWrapper, button);
 		}
