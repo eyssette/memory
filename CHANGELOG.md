@@ -1,5 +1,17 @@
 # Changelog
 
+## 4.0.1 (2026-08-28)
+
+### Fix
+
+- **lang**: corrections traduction italien [(81632c9)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/81632c971693acf5b17d8e2e2b2e411ba4b06b96)
+- **lang**: corrections traduction italien [(5a687c9)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/5a687c925cc4bf2515cf3d6f75a93a1327b946b9)
+- **i18n**: traductions pour le bouton qui ferme l'éditeur [(2b41b86)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/2b41b86fe942a787e75fc2c79c87a020238233de)
+
+### Chore
+
+- **i18n**: dernière version du module de gestion des langues de JS-template [(061c8e8)](https://forge.apps.education.fr/memorymd/memorymd.forge.apps.education.fr/-/commit/061c8e8720621b725348260aa5d64cdb91a62cef)
+
 ## 4.0.0 (2026-08-28)
 
 ### Fix
