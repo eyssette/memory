@@ -28,9 +28,9 @@ export function processYAML(md) {
 				resetCustomStyles(customCSSelement);
 			}
 			if (yaml && yaml.maths) {
-				loadScript("app/js/lib/katex.min.js", "katexJS");
-				loadScript("app/js/lib/markedKatex.js", "markedKatex");
-				loadCSS("app/js/lib/katex.min.css", "katexCSS");
+				loadScript("/js/lib/katex/katex.min.js", "katexJS");
+				loadScript("/js/lib/markedKatex.js", "markedKatex");
+				loadCSS("/js/lib/katex/katex.min.css", "katexCSS");
 			}
 			if (yaml && yaml.wintext) {
 				const winner = document.querySelector(".winner");
